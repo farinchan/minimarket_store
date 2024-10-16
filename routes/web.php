@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Front\HomeController;
 
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Back\KategoriProdukController;
+use App\Http\Controllers\Back\ProdukController;
 use App\Http\Controllers\Back\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,6 +22,22 @@ Route::post('/reset-password/{token}', [AuthController::class, 'resetPasswordPro
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('kategori-produk')->name('kategori-produk.')->group(function () {
+        Route::get('/', [KategoriProdukController::class, 'index'])->name('index');
+        Route::post('/store', [KategoriProdukController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [KategoriProdukController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [KategoriProdukController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('produk')->name('produk.')->group(function () {
+        Route::get('/', [ProdukController::class, 'index'])->name('index');
+        Route::get('/create', [ProdukController::class, 'create'])->name('create');
+        Route::post('/store', [ProdukController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [ProdukController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
         route::middleware('role:admin super')->group(function () {

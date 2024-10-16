@@ -5,7 +5,8 @@
         data-kt-scroll-wrappers="#kt_app_sidebar_navs" data-kt-scroll-offset="5px">
         @include('back/layout/partials/sidebar/_navs/_dashboard')
         {{-- @include('back/layout/partials/sidebar/_navs/_manajemen_toko') --}}
-        @include('back/layout/partials/sidebar/_navs/_menu')
+        @include('back/layout/partials/sidebar/_navs/_point_of_sale')
+        @include('back/layout/partials/sidebar/_navs/_manajemen_produk')
         @include('back/layout/partials/sidebar/_navs/_pemesanan_pembayaran')
         @include('back/layout/partials/sidebar/_navs/_manajemen_pengguna')
     </div>

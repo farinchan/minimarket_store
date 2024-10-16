@@ -42,5 +42,12 @@
         </a>
         <!--end::Menu link-->
     </div>
+    <div class="menu-item">
+        <a class="menu-link " href="#">
+            <span class="menu-icon">
+                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
+            <span class="menu-title">Profil Saya</span>
+        </a>
+    </div>
 </div>
 <!--end::Teams-->

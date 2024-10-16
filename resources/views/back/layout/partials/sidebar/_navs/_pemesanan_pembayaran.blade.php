@@ -10,12 +10,19 @@
         <a class="menu-link " href="#">
             <span class="menu-icon">
                 <i class="ki-outline ki-lock-2 fs-2"></i> </span>
-            <span class="menu-title">Toko </span>
+            <span class="menu-title">Metode Pembayaran </span>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a class="menu-link " href="#">
+            <span class="menu-icon">
+                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
+            <span class="menu-title">Pembayaran</span>
         </a>
     </div>
     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
         <span class="menu-link"><span class="menu-icon"><i class="ki-outline ki-briefcase fs-2"></i></span>
-            <span class="menu-title">Produk</span><span class="menu-arrow"></span>
+            <span class="menu-title">Pemesanan</span><span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
@@ -34,12 +41,6 @@
             </div>
         </div>
     </div>
-    <div class="menu-item">
-        <a class="menu-link " href="#">
-            <span class="menu-icon">
-                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
-            <span class="menu-title"> Ulasan </span>
-        </a>
-    </div>
-   
+
+
 </div>
