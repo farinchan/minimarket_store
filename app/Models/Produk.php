@@ -20,6 +20,6 @@ class Produk extends Model
     }
 
     public function getGambar(){
-        return $this->gamber ? Storage::url($this->gambar) : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+        return $this->gambar ? Storage::url($this->gambar) : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
     }
 }

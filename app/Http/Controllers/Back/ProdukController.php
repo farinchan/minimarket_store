@@ -46,6 +46,12 @@ class ProdukController extends Controller
             'stok' => 'required|numeric',
             'berat' => 'required|numeric',
             'kategori_produk_id' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong',
+            'numeric' => ':attribute harus berupa angka',
+            'max' => ':attribute maksimal :max karakter',
+            'image' => ':attribute harus berupa gambar',
+            'mimes' => ':attribute harus berupa gambar dengan format jpeg, png, jpg, gif, atau svg',
         ]);
 
         if ($validator->fails()) {
@@ -80,6 +86,8 @@ class ProdukController extends Controller
             'menu' => 'Produk',
             'submenu' => '',
             'produk' => Produk::find($id),
+            'kategori_produk' => KategoriProduk::all(),
+
         ];
 
         return view('back.pages.produk.edit', $data);
@@ -90,11 +98,17 @@ class ProdukController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|max:255',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'required',
+            'deskripsi' => 'nullable',
             'harga' => 'required|numeric',
             'stok' => 'required|numeric',
             'berat' => 'required|numeric',
             'kategori_produk_id' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong',
+            'numeric' => ':attribute harus berupa angka',
+            'max' => ':attribute maksimal :max karakter',
+            'image' => ':attribute harus berupa gambar',
+            'mimes' => ':attribute harus berupa gambar dengan format jpeg, png, jpg, gif, atau svg',
         ]);
 
         if ($validator->fails()) {

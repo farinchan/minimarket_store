@@ -32,8 +32,8 @@
                                 data-placeholder="Status" data-kt-ecommerce-product-filter="status">
                                 <option></option>
                                 <option value="all">All</option>
-                                <option value="publish">publish</option>
-                                <option value="draft">draft</option>
+                                <option value="Segera Habis">Segera Habis</option>
+                                <option value="Habis">Habis</option>
                             </select>
                             <!--end::Select2-->
                         </div>
@@ -58,10 +58,10 @@
                                     </div>
                                 </th>
                                 <th class="min-w-200px">Product</th>
-                                <th class="text-end min-w-70px">Stock</th>
                                 <th class="text-end min-w-100px">Harga</th>
+                                <th class="text-end min-w-70px">Stock</th>
+                                <th class="text-end min-w-70px">Berat</th>
                                 {{-- <th class="text-end min-w-100px">Rating</th> --}}
-                                <th class="text-end min-w-100px">Status</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                         </thead>
@@ -96,6 +96,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td class="text-end pe-0">@money($item->harga)</td>
                                     <td class="text-end pe-0">
                                         @if ($item->stok == 0)
                                             <span class="badge badge-light-danger">Habis</span>
@@ -107,7 +108,7 @@
                                             <span class="fw-bold text-success ms-3">{{ $item->stok }}</span>
                                         @endif
                                     </td>
-                                    <td class="text-end pe-0">@money($item->price)</td>
+                                    <td class="text-end pe-0">{{ $item->berat }} Gram</td>
                                     {{-- <td class="text-end pe-0" data-order="rating-5">
                                         <div class="rating justify-content-end">
                                             <div class="rating-label checked">
@@ -119,15 +120,6 @@
                                             </div>
                                         </div>
                                     </td> --}}
-                                    <td class="text-end pe-0" data-order="Scheduled">
-                                        <!--begin::Badges-->
-                                        @if ($item->status == 1)
-                                            <div class="badge badge-light-success">publish</div>
-                                        @else
-                                            <div class="badge badge-light-warning">draft</div>
-                                        @endif
-                                        <!--end::Badges-->
-                                    </td>
                                     <td class="text-end">
                                         <a href="#"
                                             class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
@@ -200,7 +192,7 @@
                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
 
                                 <label class="fw-bold fs-6 mb-2">
-                                    Anda Yakinkah Ingin Menghapus produk <b>{{ $item->name }}</b> ?
+                                    Anda Yakinkah Ingin Menghapus produk <b>{{ $item->nama }}</b> ?
                                 </label>
 
                             </div>
@@ -233,14 +225,11 @@
                     order: [],
                     pageLength: 10,
                     columnDefs: [{
-                        render: DataTable.render.number(",", ".", 2),
-                        targets: 4
-                    }, {
                         orderable: !1,
                         targets: 0
                     }, {
                         orderable: !1,
-                        targets: 7
+                        targets: 5
                     }]
                 })).on("draw", (function() {
                     n()
@@ -251,7 +240,7 @@
                     const t = document.querySelector('[data-kt-ecommerce-product-filter="status"]');
                     $(t).on("change", (t => {
                         let n = t.target.value;
-                        "all" === n && (n = ""), e.column(6).search(n).draw()
+                        "all" === n && (n = ""), e.column(3).search(n).draw()
                     }))
                 })(), n())
             }

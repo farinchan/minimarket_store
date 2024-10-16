@@ -13,20 +13,20 @@
             <span class="menu-title">Kategori</span>
         </a>
     </div>
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+    <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.produk.*')) here show @endif">
         <span class="menu-link"><span class="menu-icon"><i class="ki-outline ki-briefcase fs-2"></i></span>
             <span class="menu-title">Produk</span><span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
-                <a class="menu-link" href="{{route("back.produk.create")}}" title="Produk baru yang akan ditambahkan" data-bs-toggle="tooltip"
+                <a class="menu-link @if (request()->routeIs('back.produk.create')) active @endif" href="{{route("back.produk.create")}}" title="Produk baru yang akan ditambahkan" data-bs-toggle="tooltip"
                     data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">Tambah Produk</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a class="menu-link" href="{{route("back.produk.index")}}" title="Daftar produk yang sudah ada" data-bs-toggle="tooltip"
+                <a class="menu-link @if (request()->routeIs('back.produk.index')) active @endif" href="{{route("back.produk.index")}}" title="Daftar produk yang sudah ada" data-bs-toggle="tooltip"
                     data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">List Produk</span>

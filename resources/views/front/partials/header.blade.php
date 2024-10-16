@@ -25,14 +25,8 @@
                             <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                         </div>
                         <ul>
-                            <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Slider</a></li>
-                                    <li><a href="index-2.html">Video Background</a></li>
-                                    <li><a href="index-3.html">Vertical Slider</a></li>
-                                    <li><a href="index-4.html">GDPR Cookie Bar</a></li>
-                                </ul>
+                            <li>
+                                <a href="">Home</a>
                             </li>
                             <li class="megamenu submenu">
                                 <a href="javascript:void(0);" class="show-submenu-mega">Pages</a>
@@ -98,27 +92,11 @@
                                 </div>
                                 <!-- /menu-wrapper -->
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Extra Pages</a>
-                                <ul>
-                                    <li><a href="header-2.html">Header Style 2</a></li>
-                                    <li><a href="header-3.html">Header Style 3</a></li>
-                                    <li><a href="header-4.html">Header Style 4</a></li>
-                                    <li><a href="header-5.html">Header Style 5</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                    <li><a href="sign-in-modal.html">Sign In Modal</a></li>
-                                    <li><a href="contacts.html">Contact Us</a></li>
-                                    <li><a href="about.html">About 1</a></li>
-                                    <li><a href="about-2.html">About 2</a></li>
-                                    <li><a href="modal-advertise.html">Modal Advertise</a></li>
-                                    <li><a href="modal-newsletter.html">Modal Newsletter</a></li>
-                                </ul>
+                            <li>
+                                <a href="">Tentang Kami</a>
                             </li>
                             <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#0">Buy Template</a>
+                                <a href="#0">Pesanan Saya</a>
                             </li>
                         </ul>
                     </div>
