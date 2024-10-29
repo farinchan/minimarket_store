@@ -41,7 +41,7 @@
                                 <a href="{{ route('produk') }}">Produk</a>
                             </li>
                             <li class="megamenu submenu">
-                                <a href="javascript:void(0);" class="show-submenu-mega">Kategori</a>
+                                <a href="" class="show-submenu-mega">Kategori</a>
                                 <div class="menu-wrapper">
                                     <div class="row small-gutters">
                                         @php
@@ -60,7 +60,7 @@
                                             <h3>Kategori Produk</h3>
                                             <ul>
                                                 @foreach ($chunks[0] as $kategori1)
-                                                    <li><a href="#">{{ $kategori1->nama }}</a></li>
+                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori1->nama }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -68,7 +68,7 @@
                                             <h3>&nbsp;</h3>
                                             <ul>
                                                 @foreach ($chunks[1] as $kategori2)
-                                                    <li><a href="#">{{ $kategori2->nama }}</a></li>
+                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori2->nama }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -76,7 +76,7 @@
                                             <h3>&nbsp;</h3>
                                             <ul>
                                                 @foreach ($chunks[2] as $kategori3)
-                                                    <li><a href="#">{{ $kategori3->nama }}</a></li>
+                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori3->nama }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -95,7 +95,7 @@
                                 <!-- /menu-wrapper -->
                             </li>
                             <li>
-                                <a href="">Tentang Kami</a>
+                                <a href="{{ route("about") }}">Tentang Kami</a>
                             </li>
                             <li>
                                 <a href="#0">Pesanan Saya</a>

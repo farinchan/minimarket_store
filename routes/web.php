@@ -23,8 +23,11 @@ Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])-
 Route::post('/reset-password/{token}', [AuthController::class, 'resetPasswordProcess'])->name('reset-password.process');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::get('/produk', [frontProdukController::class, 'index'])->name('produk');
+Route::get('/produk/detail/{id}', [frontProdukController::class, 'detail'])->name('produk-detail');
+Route::get('/produk/kategori', [frontProdukController::class, 'category'])->name('produk-category');
 
 Route::get('/cart', [CartController::class, "cart"])->name('cart')->middleware('auth');
 Route::get('/cart/api', [CartController::class, "cartApi"])->name('cart-api');

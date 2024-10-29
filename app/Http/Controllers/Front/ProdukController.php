@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriProduk;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProdukController extends Controller
 {
@@ -22,5 +24,39 @@ class ProdukController extends Controller
             })->paginate(12),
         ];
         return view('front.pages.produk.index', $data);
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Detail Produk',
+            'menu' => 'produk',
+            'submenu' => '',
+
+            'produk' => Produk::find($id),
+        ];
+        return view('front.pages.produk.detail', $data);
+    }
+
+    public function category()
+    {
+        $id = request()->cat;
+        if (!$id) {
+            return redirect()->route('produk');
+        }
+        $kategori = KategoriProduk::where('id_kategori_produk', $id)->first();
+        if (!$kategori) {
+            Alert::error('Kategori tidak ditemukan');
+            return redirect()->route('produk');
+        }
+        $data = [
+            'title' => 'Produk',
+            'menu' => 'produk',
+            'submenu' => '',
+            'kategori' => $kategori,
+            'list_kategori' => KategoriProduk::all(),
+            'list_produk' => $kategori->produk()->paginate(12),
+        ];
+        return view('front.pages.produk.category', $data);
     }
 }

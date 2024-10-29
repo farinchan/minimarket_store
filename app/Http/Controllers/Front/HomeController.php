@@ -28,4 +28,14 @@ class HomeController extends Controller
         // dd($data);
         return view('front.pages.home.index', $data);
     }
+
+    public function about()
+    {
+        $data = [
+            'title' => 'About',
+            'menu' => 'about',
+            'submenu' => '',
+        ];
+        return view('front.pages.home.about', $data);
+    }
 }
