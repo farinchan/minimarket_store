@@ -3,13 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ProdukController as frontProdukController;
+use App\Http\Controllers\Front\CartController;
 
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\KategoriProdukController;
 use App\Http\Controllers\Back\ProdukController;
 use App\Http\Controllers\Back\UserController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
@@ -19,6 +21,15 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/forgot-password', [AuthController::class, 'forgetPasswordProcess'])->name('forgot-password.process');
 Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('reset-password');
 Route::post('/reset-password/{token}', [AuthController::class, 'resetPasswordProcess'])->name('reset-password.process');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/produk', [frontProdukController::class, 'index'])->name('produk');
+
+Route::get('/cart', [CartController::class, "cart"])->name('cart')->middleware('auth');
+Route::get('/cart/api', [CartController::class, "cartApi"])->name('cart-api');
+Route::delete('/cart/{id}/remove', [CartController::class, "removeCart"])->name('cart-remove');
+Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
