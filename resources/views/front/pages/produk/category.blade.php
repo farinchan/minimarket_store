@@ -12,8 +12,8 @@
                 <div class="container">
                     <div class="breadcrumbs">
                         <ul>
-                            <li><a href="#">Produk</a></li>
-                            <li><a href="#">Kategori</a></li>
+                            <li><a href="{{ route("home") }}">Home</a></li>
+                            <li><a href="{{ route("produk") }}">Produk</a></li>
                             <li>{{ $kategori->nama }}</li>
                         </ul>
                     </div>
@@ -98,13 +98,13 @@
                                         <span class="ribbon new">New</span>
                                     @endif
                                     <figure>
-                                        <a href="product-detail-1.html">
+                                        <a href="{{ route("produk-detail", $produk->id_produk) }}">
                                             <img class="img-fluid lazy"
                                                 src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
                                                 data-src="{{ $produk->getGambar() }}" alt="">
                                         </a>
                                     </figure>
-                                    <a href="product-detail-1.html">
+                                    <a href="{{ route("produk-detail", $produk->id_produk) }}">
                                         <h3>{{ $produk->nama }}</h3>
                                     </a>
                                     <div class="price_box">

@@ -123,13 +123,13 @@
                                 <span class="ribbon new">New</span>
                             @endif
                             <figure>
-                                <a href="product-detail-1.html">
+                                <a href="{{ route("produk-detail", $top->id_produk) }}">
                                     <img class="img-fluid lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
                                         data-src="{{ $top->getGambar() }}" alt="">
                                 </a>
                             </figure>
-                            <a href="product-detail-1.html">
+                            <a href="{{ route("produk-detail", $top->id_produk) }}">
                                 <h3>{{ $top->nama }}</h3>
                             </a>
                             <div class="price_box">
@@ -189,13 +189,13 @@
                                 <span class="ribbon new">New</span>
                             @endif
                             <figure>
-                                <a href="product-detail-1.html">
+                                <a href="{{ route("produk-detail", $latest->id_produk) }}">
                                     <img class="owl-lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
                                         data-src="{{ $latest->getGambar() }}" alt="">
                                 </a>
                             </figure>
-                            <a href="product-detail-1.html">
+                            <a href="{{ route("produk-detail", $latest->id_produk) }}">
                                 <h3>{{ $latest->nama }}</h3>
                             </a>
                             <div class="price_box">

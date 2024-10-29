@@ -28,12 +28,14 @@ class ProdukController extends Controller
 
     public function detail($id)
     {
+        $produk = Produk::find($id);
         $data = [
             'title' => 'Detail Produk',
             'menu' => 'produk',
             'submenu' => '',
 
-            'produk' => Produk::find($id),
+            'produk' => $produk,
+            'produk_terkait' => Produk::where('kategori_produk_id', $produk->kategori_produk_id)->where('id_produk', '!=', $produk->id_produk)->inRandomOrder()->limit(4)->get(),
         ];
         return view('front.pages.produk.detail', $data);
     }
