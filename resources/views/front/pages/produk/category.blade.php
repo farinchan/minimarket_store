@@ -12,12 +12,14 @@
                 <div class="container">
                     <div class="breadcrumbs">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
+                            <li><a href="#">Produk</a></li>
+                            <li><a href="#">Kategori</a></li>
+                            <li>{{ $kategori->nama }}</li>
                         </ul>
                     </div>
-                    <h1>Shoes - Grid listing</h1>
+                    <h1>Kategori - {{ $kategori->nama }}
+
+                    </h1>
                 </div>
             </div>
             <img src="img/bg_cat_shoes.jpg" class="img-fluid" alt="">
