@@ -74,6 +74,8 @@ class DashboardController extends Controller
         $pegawai = Pegawai::where('user_id', Auth::user()->id)->first();
         $pegawai->nama = $request->nama;
         $pegawai->jenis_kelamin = $request->jenis_kelamin;
+        // $pegawai->tempat_lahir = $request->tempat_lahir;
+        // $pegawai->tanggal_lahir = $request->tanggal_lahir;
         $pegawai->no_telp = $request->no_telp;
         $pegawai->alamat = $request->alamat;
         if ($request->hasFile('foto')) {
