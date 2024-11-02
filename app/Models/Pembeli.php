@@ -20,6 +20,6 @@ class Pembeli extends Model
     }
 
     public function getFoto(){
-        return $this->foto ? Storage::url($this->foto) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name='.urlencode($this->nama);
+        return $this->foto ? Storage::url($this->foto) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name='.$this->nama;
     }
 }

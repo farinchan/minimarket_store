@@ -43,7 +43,8 @@
         <!--end::Menu link-->
     </div>
     <div class="menu-item">
-        <a class="menu-link " href="#">
+        <a class="menu-link @if (request()->routeIs('back.profile')) active @endif"
+        href="{{ route('back.profile') }}">
             <span class="menu-icon">
                 <i class="ki-outline ki-lock-2 fs-2"></i> </span>
             <span class="menu-title">Profil Saya</span>

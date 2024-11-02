@@ -54,13 +54,14 @@
                                             // Bagi data menjadi 3 bagian
                                             $chunks = $kategori_produk->chunk($per_column);
 
-
                                         @endphp
                                         <div class="col-lg-3">
                                             <h3>Kategori Produk</h3>
                                             <ul>
                                                 @foreach ($chunks[0] as $kategori1)
-                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori1->nama }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('produk-category', ['cat' => $kategori1->id_kategori_produk]) }}">{{ $kategori1->nama }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -68,7 +69,9 @@
                                             <h3>&nbsp;</h3>
                                             <ul>
                                                 @foreach ($chunks[1] as $kategori2)
-                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori2->nama }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('produk-category', ['cat' => $kategori1->id_kategori_produk]) }}">{{ $kategori2->nama }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -76,7 +79,9 @@
                                             <h3>&nbsp;</h3>
                                             <ul>
                                                 @foreach ($chunks[2] as $kategori3)
-                                                    <li><a href="{{ route("produk-category",["cat" => $kategori1->id_kategori_produk] ) }}">{{ $kategori3->nama }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('produk-category', ['cat' => $kategori1->id_kategori_produk]) }}">{{ $kategori3->nama }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -84,8 +89,8 @@
                                             <div class="banner_menu">
                                                 <a href="#0">
                                                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                                        data-src="{{ asset("ext_img/logo.png") }}" width="400" height="550"
-                                                        alt="" class="img-fluid lazy">
+                                                        data-src="{{ asset('ext_img/logo.png') }}" width="400"
+                                                        height="550" alt="" class="img-fluid lazy">
                                                 </a>
                                             </div>
                                         </div>
@@ -95,7 +100,7 @@
                                 <!-- /menu-wrapper -->
                             </li>
                             <li>
-                                <a href="{{ route("about") }}">Tentang Kami</a>
+                                <a href="{{ route('about') }}">Tentang Kami</a>
                             </li>
                             <li>
                                 <a href="#0">Pesanan Saya</a>
@@ -105,8 +110,11 @@
                     <!--/main-menu -->
                 </nav>
                 <div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-                    <a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>+94
-                            423-23-221</strong></a>
+                    <a class="phone_top"
+                        href="https://wa.me/6285319156748?text=Halo%20Admin%20Saya%20Mau%20Tanya%20Tentang%20Produk%20Anda"
+                        target="_blank"><strong><span>Butuh Bantuan?</span>
+                            +62 853-1915-6748
+                        </strong></a>
                 </div>
             </div>
             <!-- /row -->
@@ -155,15 +163,16 @@
                     <ul class="top_tools">
                         <li>
                             <div class="dropdown dropdown-cart">
-                                <a href="{{ route("cart") }}" id="cartCount" class="cart_bt"></a>
+                                <a href="{{ route('cart') }}" id="cartCount" class="cart_bt"></a>
                                 <div class="dropdown-menu">
                                     <ul id="listCart">
 
                                     </ul>
                                     <div class="total_drop">
-                                        <div class="clearfix"><strong>Total</strong><span id="totalCart">Rp. 0</span></div>
-                                        <a href="#" class="btn_1 outline">View Cart</a><a
-                                            href="#" class="btn_1">Checkout</a>
+                                        <div class="clearfix"><strong>Total</strong><span id="totalCart">Rp. 0</span>
+                                        </div>
+                                        <a href="#" class="btn_1 outline">View Cart</a><a href="#"
+                                            class="btn_1">Checkout</a>
                                     </div>
                                 </div>
                             </div>
@@ -175,21 +184,33 @@
                             <div class="dropdown dropdown-access">
                                 <a href="account.html" class="access_link"><span>Account</span></a>
                                 <div class="dropdown-menu">
-                                    <a href="account.html" class="btn_1">Sign In or Sign Up</a>
+                                    @guest
+                                        <a href="{{ route('login') }}" class="btn_1">Sign In or Sign Up</a>
+                                    @endguest
                                     <ul>
-                                        <li>
-                                            <a href="track-order.html"><i class="ti-truck"></i>Track your
-                                                Order</a>
-                                        </li>
-                                        <li>
-                                            <a href="account.html"><i class="ti-package"></i>My Orders</a>
-                                        </li>
-                                        <li>
-                                            <a href="account.html"><i class="ti-user"></i>My Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
-                                        </li>
+                                        @auth
+                                            @role('pembeli')
+                                                <li>
+                                                    <a href="#"><i class="ti-user"></i>
+                                                        {{ Auth::user()->pembeli?->nama }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="account.html"><i class="ti-package"></i>Pesanan Saya</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="#"><i class="ti-user"></i>
+                                                        {{ Auth::user()->pegawai?->nama }}
+                                                    </a>
+                                                </li>
+                                            @endrole
+                                            <li>
+                                                <a href="{{ route('logout') }}"><i
+                                                        class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                                            </li>
+                                        @endauth
+
                                     </ul>
                                 </div>
                             </div>

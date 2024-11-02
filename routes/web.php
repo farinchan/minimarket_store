@@ -37,6 +37,9 @@ Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add')
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/profile', [DashboardController::class, 'profileEdit'])->name('profile');
+    Route::put('/profile/update', [DashboardController::class, 'profileUpdate'])->name('profile.update');
+
     Route::prefix('kategori-produk')->name('kategori-produk.')->group(function () {
         Route::get('/', [KategoriProdukController::class, 'index'])->name('index');
         Route::post('/store', [KategoriProdukController::class, 'store'])->name('store');
