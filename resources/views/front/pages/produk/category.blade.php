@@ -65,7 +65,7 @@
                                 <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Categories</a></h4>
                                 <div class="collapse show" id="filter_1">
                                     <ul>
-                                        @foreach ($list_kategori as $kategori_list)
+                                        @foreach ($list_kategori as $kategori_list)c
                                             <li>
                                                 <label class="container_check">{{ $kategori_list->nama }}
                                                     <small>{{ $kategori_list->produk->count() }}</small>
@@ -116,8 +116,8 @@
                                                     class="ti-heart"></i><span>Add to favorites</span></a>
                                         </li>
                                         <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
-                                                data-bs-placement="left" title="Add to cart"><i
-                                                    class="ti-shopping-cart"></i><span>Add to cart</span></a>
+                                                data-bs-placement="left" title="Tambah ke Keranjang" id="addCart" onclick="addCart({{ $produk->id_produk }})"><i
+                                                    class="ti-shopping-cart"></i><span>Tambah ke Keranjang</span></a>
                                         </li>
                                     </ul>
                                 </div>

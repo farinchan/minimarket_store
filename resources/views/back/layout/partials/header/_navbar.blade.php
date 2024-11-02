@@ -38,7 +38,7 @@
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
             data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
-            <img src="assets/media/avatars/300-2.jpg" alt="user"/>
+            <img src="{{ Auth::user()->pegawai?->getFoto() }}" alt="user"/>
         </div>
 @include("back/partials/menus/_user-account-menu")
         <!--end::Menu wrapper-->

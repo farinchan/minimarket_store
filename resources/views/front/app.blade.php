@@ -170,6 +170,52 @@
         </script>
     @endauth
 
+    @auth
+        <script>
+            function addCart(produk_id) {
+                console.log(produk_id);
+
+                $.ajax({
+                    url: "{{ route('cart-add') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        produk_id: produk_id,
+                        jumlah: 1
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            $('.top_panel').addClass('show');
+                            $('.top_panel label').text(response.message);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.log(xhr);
+                    }
+                });
+
+            }
+        </script>
+    @else
+        <script>
+            $('#addCart').click(function() {
+                Swal.fire({
+                    title: 'Anda belum login',
+                    text: 'Silahkan login terlebih dahulu untuk menambahkan produk ke keranjang',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Login',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('login') }}";
+                    }
+                });
+            });
+        </script>
+    @endauth
+
 
 </body>
 

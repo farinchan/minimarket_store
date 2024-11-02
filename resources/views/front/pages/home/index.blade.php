@@ -140,9 +140,8 @@
                                         title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a>
                                 </li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                        title="Add to cart" id="addCart" onclick="addCart({{ $top->id_produk }})"
-                                        ><i class="ti-shopping-cart"></i><span>Add to
-                                            cart</span></a>
+                                        title="Tambah ke Keranjang" id="addCart" onclick="addCart({{ $top->id_produk }})"
+                                        ><i class="ti-shopping-cart"></i><span>Tambah ke Keranjang</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -321,49 +320,5 @@
     <!-- SPECIFIC SCRIPTS -->
     <script src="{{ asset('front/js/carousel-home.min.js') }}"></script>
 
-    @auth
-        <script>
-            function addCart(produk_id) {
-                console.log(produk_id);
 
-                $.ajax({
-                    url: "{{ route('cart-add') }}",
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        produk_id: produk_id,
-                        jumlah: 1
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.success) {
-                            $('.top_panel').addClass('show');
-                            $('.top_panel label').text(response.message);
-                        }
-                    },
-                    error: function(xhr) {
-                        console.log(xhr);
-                    }
-                });
-
-            }
-        </script>
-    @else
-        <script>
-            $('#addCart').click(function() {
-                Swal.fire({
-                    title: 'Anda belum login',
-                    text: 'Silahkan login terlebih dahulu untuk menambahkan produk ke keranjang',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Login',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "{{ route('login') }}";
-                    }
-                });
-            });
-        </script>
-    @endauth
 @endsection
