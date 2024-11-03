@@ -90,7 +90,7 @@
                             <span>Total</span> <div id="userCartTotalPrice">Rp.0</div>
                         </li>
                     </ul>
-                    <a href="#" onclick="developmentMessage();" class="btn_1 full-width cart">Proceed to Checkout</a>
+                    <a href="{{ route("checkout") }}" class="btn_1 full-width cart">Checkout Sekarang</a>
                 </div>
             </div>
         </div>

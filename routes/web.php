@@ -8,10 +8,10 @@ use App\Http\Controllers\Front\CartController;
 
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\KategoriProdukController;
+use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\ProdukController;
 use App\Http\Controllers\Back\UserController;
-
-
+use App\Http\Controllers\Front\CheckoutController;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
@@ -34,6 +34,8 @@ Route::get('/cart/api', [CartController::class, "cartApi"])->name('cart-api');
 Route::delete('/cart/{id}/remove', [CartController::class, "removeCart"])->name('cart-remove');
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 
+Route::get('/checkout', [CheckoutController::class, "checkout"])->name('checkout')->middleware('auth');
+
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -54,6 +56,13 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
         Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [ProdukController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('metode-pembayaran')->name('metode-pembayaran.')->middleware(['role:admin super|admin jual beli'])->group(function () {
+        Route::get('/', [MetodePembayaranController::class, 'index'])->name('index');
+        Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {

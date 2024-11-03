@@ -79,7 +79,7 @@
                             <div class="price_main"><span class="new_price">@money($produk->harga)</span></div>
                         </div>
                         <div class="col-lg-4 col-md-6">
-                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
+                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Tambah ke Keranjang</a></div>
                         </div>
                     </div>
                 </div>

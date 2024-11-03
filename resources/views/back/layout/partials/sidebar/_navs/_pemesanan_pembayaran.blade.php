@@ -7,7 +7,8 @@
         <div class="app-sidebar-separator separator"></div>
     </div>
     <div class="menu-item">
-        <a class="menu-link " href="#">
+        <a class="menu-link @if (request()->routeIs('back.metode-pembayaran.index')) active @endif"
+            href="{{ route('back.metode-pembayaran.index') }}">
             <span class="menu-icon">
                 <i class="ki-outline ki-lock-2 fs-2"></i> </span>
             <span class="menu-title">Metode Pembayaran </span>

@@ -59,40 +59,42 @@
 
     <div id="toTop"></div><!-- Back to top button -->
 
-    {{-- <div class="top_panel">
-        <div class="container header_panel">
-            <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
-            <label>1 produk Sudah Ditambah ke Keranjang</label>
-        </div>
-        <!-- /header_panel -->
-        <div class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="item_panel">
-                            <figure>
-                                <img src="img/products/product_placeholder_square_small.jpg"
-                                    data-src="{{ Storage::url('images/product/' . $product->productImage[0]->image) }}"
-                                    class="lazy" alt="">
-                            </figure>
-                            <h4>{{ $product->name }}</h4>
-                            <div class="price_panel"><span class="new_price">@money($product->price - ($product->price * $product->discount) / 100)</span>
-                                @if ($product->discount > 0)
-                                    <span class="percentage">-{{ $product->discount }}%</span> <span
-                                        class="old_price">{{ $product->price }}</span>
-                                @endif
+    @if (request()->routeIs('produk-detail'))
+        @auth
+            <div class="top_panel">
+                <div class="container header_panel">
+                    <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
+                    <label>1 produk Sudah Ditambah ke Keranjang</label>
+                </div>
+                <!-- /header_panel -->
+                <div class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="item_panel">
+                                    <figure>
+                                        <img src="img/products/product_placeholder_square_small.jpg"
+                                            data-src="{{  $produk->getGambar()}}"
+                                            class="lazy" alt="">
+                                    </figure>
+                                    <h4>{{ $produk->nama }}</h4>
+                                    <div class="price_panel"><span class="new_price">@money($produk->harga)</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 btn_panel">
+                                <a href="{{ route("cart") }}" class="btn_1 outline">Lihat Keranjang</a> <a href="{{ route("cart") }}"
+                                    class="btn_1">Checkout</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 btn_panel">
-                        <a href="cart.html" class="btn_1 outline">View cart</a> <a href="checkout.html"
-                            class="btn_1">Checkout</a>
-                    </div>
                 </div>
+                <!-- /item -->
             </div>
-        </div>
-        <!-- /item -->
-    </div> --}}
+        @endauth
+
+    @endif
 
     <!-- COMMON SCRIPTS -->
     <script src="{{ asset('front/js/common_scripts.min.js') }}"></script>
@@ -170,51 +172,7 @@
         </script>
     @endauth
 
-    @auth
-        <script>
-            function addCart(produk_id) {
-                console.log(produk_id);
 
-                $.ajax({
-                    url: "{{ route('cart-add') }}",
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        produk_id: produk_id,
-                        jumlah: 1
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.success) {
-                            $('.top_panel').addClass('show');
-                            $('.top_panel label').text(response.message);
-                        }
-                    },
-                    error: function(xhr) {
-                        console.log(xhr);
-                    }
-                });
-
-            }
-        </script>
-    @else
-        <script>
-            $('#addCart').click(function() {
-                Swal.fire({
-                    title: 'Anda belum login',
-                    text: 'Silahkan login terlebih dahulu untuk menambahkan produk ke keranjang',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Login',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "{{ route('login') }}";
-                    }
-                });
-            });
-        </script>
-    @endauth
 
 
 </body>
