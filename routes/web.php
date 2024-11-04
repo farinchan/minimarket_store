@@ -35,6 +35,7 @@ Route::delete('/cart/{id}/remove', [CartController::class, "removeCart"])->name(
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 
 Route::get('/checkout', [CheckoutController::class, "checkout"])->name('checkout')->middleware('auth');
+Route::post('/checkout/process', [CheckoutController::class, "checkoutProcess"])->name('checkout-process')->middleware('auth');
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

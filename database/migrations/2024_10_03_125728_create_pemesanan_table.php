@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('pengiriman_kurir');
             $table->integer('pengiriman_ongkir');
             $table->integer('total_harga');
-            $table->enum('status', ['belum bayar', 'sudah bayar', 'sedang diproses', 'dikirim', 'selesai']);
-            $table->string('resi_pengiriman');
+            $table->enum('status', ['belum bayar', 'sudah bayar', 'sedang diproses', 'dikirim', 'selesai'])->default('belum bayar');
+            $table->string('resi_pengiriman')->nullable();
             $table->foreignId('metode_pembayaran_id')->references('id')->on('metode_pembayaran')->onDelete('cascade');
             $table->timestamps();
         });
