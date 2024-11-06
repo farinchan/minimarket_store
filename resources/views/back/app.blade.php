@@ -15,30 +15,22 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <base href="" />
-    <title>Metronic - The World's #1 Selling Tailwind CSS & Bootstrap Admin Template by KeenThemes</title>
+    <title>Minimarket</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="
-            The most advanced Tailwind CSS & Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo,
-            Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions.
-            Grab your copy now and get life-time updates for free.
+            Minimarket ini adalah website penjualan produk-produk kebutuhan sehari-hari, seperti makanan, minuman, dan kebutuhan rumah tangga lainnya. silahkan belanja produk-produk kebutuhan sehari-hari anda disini.
         " />
     <meta name="keywords"
         content="
-            tailwind, tailwindcss, metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js,
-            Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates,
-            free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button,
-            bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon
+            minimarket, belanja online, belanja kebutuhan sehari-hari, belanja makanan, belanja minuman, belanja kebutuhan rumah tangga
         " />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
     <meta property="og:title"
-        content="Metronic - The World's #1 Selling Tailwind CSS & Bootstrap Admin Template by KeenThemes" />
-    <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Metronic by Keenthemes" />
+        content="minimarket" />
+    <meta property="og:site_name" content="minimarket" />
     <link rel="canonical" href="http://preview.keenthemes.com?page=index" />
-    <link rel="shortcut icon" href="{{ asset("back/media/logos/favicon.ico") }}" />
+    <link rel="shortcut icon" href="{{ asset('ext_img/logo.png') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" /> <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
