@@ -171,7 +171,7 @@
                                     <div class="total_drop">
                                         <div class="clearfix"><strong>Total</strong><span id="totalCart">Rp. 0</span>
                                         </div>
-                                        <a href="#" class="btn_1 outline">View Cart</a><a href="#"
+                                        <a href="{{ route('cart') }}" class="btn_1 outline">Lihat Keranjang</a><a href="{{ route('checkout') }}"
                                             class="btn_1">Checkout</a>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                         </li>
                         <li>
                             <div class="dropdown dropdown-access">
-                                <a href="account.html" class="access_link"><span>Account</span></a>
+                                <a href="#" class="access_link"><span>Account</span></a>
                                 <div class="dropdown-menu">
                                     @guest
                                         <a href="{{ route('login') }}" class="btn_1">Sign In or Sign Up</a>
