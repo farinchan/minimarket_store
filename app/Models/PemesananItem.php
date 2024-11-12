@@ -17,4 +17,9 @@ class PemesananItem extends Model
     {
         return $this->belongsTo(Pemesanan::class, 'pemesanan_id', 'id_pemesanan');
     }
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class, 'produk_id', 'id_produk');
+    }
 }

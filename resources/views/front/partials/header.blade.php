@@ -103,7 +103,7 @@
                                 <a href="{{ route('about') }}">Tentang Kami</a>
                             </li>
                             <li>
-                                <a href="#0">Pesanan Saya</a>
+                                <a href="{{ route('pesanan-saya')}}">Pesanan Saya</a>
                             </li>
                         </ul>
                     </div>
@@ -196,7 +196,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="account.html"><i class="ti-package"></i>Pesanan Saya</a>
+                                                    <a href="{{ route('pesanan-saya') }}"><i class="ti-package"></i>Pesanan Saya</a>
                                                 </li>
                                             @else
                                                 <li>

@@ -5,20 +5,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Minimarket ini adalah website penjualan produk-produk kebutuhan sehari-hari, seperti makanan, minuman, dan kebutuhan rumah tangga lainnya. silahkan belanja produk-produk kebutuhan sehari-hari anda disini.">
+    <meta name="description"
+        content="Minimarket ini adalah website penjualan produk-produk kebutuhan sehari-hari, seperti makanan, minuman, dan kebutuhan rumah tangga lainnya. silahkan belanja produk-produk kebutuhan sehari-hari anda disini.">
     <meta name="author" content="Fajri">
     <title>Minimarket</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('ext_img/logo.png') }}">
-    <link rel="apple-touch-icon" type="image/x-icon"
-        href="{{ asset('ext_img/logo.png') }}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-        href="{{ asset('ext_img/logo.png') }}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-        href="{{ asset('ext_img/logo.png') }}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-        href="{{ asset('ext_img/logo.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('ext_img/logo.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('ext_img/logo.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('ext_img/logo.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('ext_img/logo.png') }}">
 
     <!-- GOOGLE WEB FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,8 +71,7 @@
                                 <div class="item_panel">
                                     <figure>
                                         <img src="img/products/product_placeholder_square_small.jpg"
-                                            data-src="{{  $produk->getGambar()}}"
-                                            class="lazy" alt="">
+                                            data-src="{{ $produk->getGambar() }}" class="lazy" alt="">
                                     </figure>
                                     <h4>{{ $produk->nama }}</h4>
                                     <div class="price_panel"><span class="new_price">@money($produk->harga)</span>
@@ -84,8 +80,8 @@
                                 </div>
                             </div>
                             <div class="col-md-5 btn_panel">
-                                <a href="{{ route("cart") }}" class="btn_1 outline">Lihat Keranjang</a> <a href="{{ route("cart") }}"
-                                    class="btn_1">Checkout</a>
+                                <a href="{{ route('cart') }}" class="btn_1 outline">Lihat Keranjang</a> <a
+                                    href="{{ route('cart') }}" class="btn_1">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -93,12 +89,17 @@
                 <!-- /item -->
             </div>
         @endauth
+    @endif
 
+    @if (request()->routeIs('pesanan-saya'))
+        @include('front.partials.modal_batalkan_pesanan')
     @endif
 
     <!-- COMMON SCRIPTS -->
     <script src="{{ asset('front/js/common_scripts.min.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
+
+
 
     @yield('scripts')
 

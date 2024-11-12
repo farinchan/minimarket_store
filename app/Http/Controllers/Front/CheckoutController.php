@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Keranjang;
 use App\Models\MetodePembayaran;
 use App\Models\Pemesanan;
+use App\Models\PemesananItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -69,10 +70,18 @@ class CheckoutController extends Controller
         $pemesanan->metode_pembayaran_id = $request->metode_pembayaran_id;
         $pemesanan->save();
 
-        Keranjang::where('pembeli_id', Auth::user()->pembeli->id_pembeli)->delete();
+        Keranjang::where('pembeli_id', Auth::user()->pembeli->id_pembeli)->get()->each(function ($item) use ($pemesanan) {
+            $pemesanan_item = new PemesananItem();
+            $pemesanan_item->pemesanan_id = $pemesanan->id_pemesanan;
+            $pemesanan_item->produk_id = $item->produk_id;
+            $pemesanan_item->jumlah = $item->jumlah;
+            $pemesanan_item->harga = $item->produk->harga;
+            $pemesanan_item->total_harga = $item->produk->harga * $item->jumlah;
+            $pemesanan_item->save();
+            $item->delete();
+        });
 
         Alert::success('Success', 'Pemesanan berhasil');
         return redirect()->route('home');
-
     }
 }

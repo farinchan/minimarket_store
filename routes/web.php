@@ -12,6 +12,7 @@ use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\ProdukController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\PesananController;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
@@ -36,6 +37,9 @@ Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add')
 
 Route::get('/checkout', [CheckoutController::class, "checkout"])->name('checkout')->middleware('auth');
 Route::post('/checkout/process', [CheckoutController::class, "checkoutProcess"])->name('checkout-process')->middleware('auth');
+
+Route::get('/pesanan-saya', [PesananController::class, 'index'])->name('pesanan-saya')->middleware('auth');
+Route::delete('/pesanan-saya/{id}/batal', [PesananController::class, 'batalPesanan'])->name('pesanan-batal')->middleware('auth');
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

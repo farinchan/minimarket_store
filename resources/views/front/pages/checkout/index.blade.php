@@ -244,9 +244,9 @@
                             $('#pengiriman_kurir').niceSelect('update');
 
                         });
-                        $('[name=pengiriman_provinsi]').val(response.rajaongkir.origin_details
+                        $('[name=pengiriman_provinsi]').val(response.rajaongkir.destination_details
                             .province);
-                        $('[name=pengiriman_kota]').val(response.rajaongkir.origin_details
+                        $('[name=pengiriman_kota]').val(response.rajaongkir.destination_details
                             .city_name);
                     }
                 });
