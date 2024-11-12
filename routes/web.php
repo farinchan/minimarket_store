@@ -40,6 +40,8 @@ Route::post('/checkout/process', [CheckoutController::class, "checkoutProcess"])
 
 Route::get('/pesanan-saya', [PesananController::class, 'index'])->name('pesanan-saya')->middleware('auth');
 Route::delete('/pesanan-saya/{id}/batal', [PesananController::class, 'batalPesanan'])->name('pesanan-batal')->middleware('auth');
+Route::get('/pesanan-saya/{id}/invoice', [PesananController::class, 'cetakInvoice'])->name('pesanan-invoice')->middleware('auth');
+Route::post('/pesanan-saya/{id}/pembayaran', [PesananController::class, 'pembayaranStore'])->name('pesanan-pembayaran')->middleware('auth');
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

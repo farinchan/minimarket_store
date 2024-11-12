@@ -143,11 +143,50 @@
                                     </div>
                                 </div>
                                 <hr>
+                                @if ($pesanan->status == 'belum bayar' && $pesanan->pembayaran->isNotEmpty())
+                                    <h5> Riwayat Pembayaran</h5>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Tanggal Pembayaran</th>
+                                                <th scope="col">Bukti Pembayaran</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pesanan->pembayaran as $pembayaran)
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ Carbon\Carbon::parse($pembayaran->created_at)->format('d-m-Y H:i:s') }}
+                                                    <td>
+                                                        <a href="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" style="color: rgb(67, 74, 105)"
+                                                            target="_blank"><i class="fa-solid fa-file-invoice-dollar"></i>&nbsp;Lihat Bukti Pembayaran</a>
+                                                    </td>
+                                                    <td>
+                                                        @if ($pembayaran->status == 'pending')
+                                                            <span style="color: orange">Menunggu konfirmasi</span>
+                                                        @elseif ($pembayaran->status == 'success')
+                                                            <span style="color: green">Sukses</span>
+                                                        @elseif ($pembayaran->status == 'expired')
+                                                            <span style="color: red">Pembayaran Ditolak</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+
+                                    </table>
+                                    <hr>
+                                @endif
+
                                 @if ($pesanan->status != 'dibatalkan')
                                     <div class="postmeta text-end mb-3">
                                         <ul>
                                             <li style="font-size: 20px">
-                                                <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i>
+                                                <a href="{{ route('pesanan-invoice', $pesanan->id_pemesanan) }}"><i
+                                                        class="fa-solid fa-file-invoice-dollar"></i>
                                                     Cetak Invoice
                                                 </a>
                                             </li>
@@ -161,7 +200,9 @@
                                                     </a>
                                                 </li>
                                                 <li style="font-size: 20px">
-                                                    <a href="#"><i class="ti-credit-card"></i>
+                                                    <a href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#pembayaran-{{ $pesanan->id_pemesanan }}">
+                                                        <i class="ti-credit-card"></i>
                                                         Bayar Sekarang
                                                     </a>
                                                 </li>
@@ -183,11 +224,69 @@
                             <h5>Belum ada pesanan</h5>
                         </div>
                     </div>
+                    <div style="height: 500px" ></div>
                 @endforelse
+            </div>
+
+            <div class="pagination__wrapper">
+                <ul class="pagination">
+                    @if ($list_pesanan->onFirstPage())
+                        <li class="page-item previous">
+                            <a href="#" class="page-link"><i class="previous"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="prev" title="previous page">&#10094;</a>
+                        </li>
+                    @else
+                        <li class="page-item previous">
+                            <a href="{{ $list_pesanan->previousPageUrl() }}" class="page-link bg-light"><i
+                                    class="previous"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="prev" title="previous page">&#10094;</a>
+                        </li>
+                    @endif
+
+
+                    @php
+                        // Menghitung halaman pertama dan terakhir yang akan ditampilkan
+                        $start = max($list_pesanan->currentPage() - 2, 1);
+                        $end = min($start + 4, $list_pesanan->lastPage());
+                    @endphp
+
+                    @if ($start > 1)
+                        <!-- Menampilkan tanda elipsis jika halaman pertama tidak termasuk dalam tampilan -->
+                        <li>
+                            <a>...</a>
+                        </li>
+                    @endif
+
+                    @foreach ($list_pesanan->getUrlRange($start, $end) as $page => $url)
+                        <li>
+                            <a href="{{ $url }}"
+                                class="{{ $page == $list_pesanan->currentPage() ? ' active' : '' }}">{{ $page }}</a>
+                        </li>
+                    @endforeach
+
+                    @if ($end < $list_pesanan->lastPage())
+                        <!-- Menampilkan tanda elipsis jika halaman terakhir tidak termasuk dalam tampilan -->
+                        <li>
+                            <a>...</a>
+                        </li>
+                    @endif
+
+                    @if ($list_pesanan->hasMorePages())
+                        <li><a href="{{ $list_pesanan->nextPageUrl() }}" class="next" title="next page">&#10095;</a>
+                        </li>
+                    @else
+                        <li><a href="#" class="next" title="next page">&#10095;</a></li>
+                    @endif
+                </ul>
             </div>
 
         </div>
         <!-- /container -->
+
     </main>
 
 

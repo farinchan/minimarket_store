@@ -93,6 +93,7 @@
 
     @if (request()->routeIs('pesanan-saya'))
         @include('front.partials.modal_batalkan_pesanan')
+        @include('front.partials.modal_pembayaran')
     @endif
 
     <!-- COMMON SCRIPTS -->

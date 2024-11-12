@@ -20,11 +20,16 @@ class Pemesanan extends Model
 
     public function metodePembayaran()
     {
-        return $this->belongsTo(MetodePembayaran::class, 'metode_pembayaran_id', 'id_metode_pembayaran');
+        return $this->belongsTo(MetodePembayaran::class, 'metode_pembayaran_id', 'id');
     }
 
     public function pemesananItem()
     {
         return $this->hasMany(PemesananItem::class, 'pemesanan_id', 'id_pemesanan');
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'pemesanan_id', 'id_pemesanan');
     }
 }

@@ -81,7 +81,7 @@ class CheckoutController extends Controller
             $item->delete();
         });
 
-        Alert::success('Success', 'Pemesanan berhasil');
-        return redirect()->route('home');
+        Alert::success('Success', 'Pemesanan berhasil, silahkan lakukan pembayaran');
+        return redirect()->route('pesanan-saya');
     }
 }
