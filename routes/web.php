@@ -10,10 +10,12 @@ use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\KasirController;
 use App\Http\Controllers\Back\KategoriProdukController;
 use App\Http\Controllers\Back\MetodePembayaranController;
+use App\Http\Controllers\Back\TransaksiController;
 use App\Http\Controllers\Back\ProdukController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\PesananController;
+use App\Models\PemesananItem;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
@@ -76,6 +78,14 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
         Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
         Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('pesanan')->name('pesanan.')->group(function () {
+        Route::get('/konfirmasi-pembayaran', [TransaksiController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
+        Route::post('/konfirmasi-pembayaran/{id_konfirmasi}/approve', [TransaksiController::class, 'konfirmasiPembayaranApprove'])->name('konfirmasi-pembayaran.approve');
+        Route::post('/konfirmasi-pembayaran/{id_konfirmai}/reject', [TransaksiController::class, 'konfirmasiPembayaranReject'])->name('konfirmasi-pembayaran.reject');
+        Route::post('/cancel-Pembayaran/{id}', [TransaksiController::class, 'cancelPembayaran'])->name('cancelPembayaran');
+
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
