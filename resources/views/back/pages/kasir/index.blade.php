@@ -49,9 +49,9 @@
                                                                         {{ $produk->nama }}
                                                                     </span>
                                                                     <span
-                                                                        class="text-gray-500 fw-semibold d-block fs-6 mt-n1">16
-                                                                        mins
-                                                                        to cook</span>
+                                                                        class="text-gray-500 fw-semibold d-block fs-6 mt-n1">
+                                                                        Stok : {{ $produk->stok }}
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                             <span class="text-success text-end fw-bold fs-1">
