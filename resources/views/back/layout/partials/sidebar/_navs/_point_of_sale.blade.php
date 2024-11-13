@@ -9,14 +9,18 @@
     <div class="menu-item">
         <a class="menu-link @if (request()->routeIs('back.kasir.index')) active @endif" href="{{ route('back.kasir.index') }}">
             <span class="menu-icon">
-                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
+                <i class="ki-outline ki-finance-calculator fs-2">
+                </i>
+            </span>
             <span class="menu-title">Kasir </span>
         </a>
     </div>
     <div class="menu-item">
         <a class="menu-link " href="#">
             <span class="menu-icon">
-                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
+                <i class="ki-outline ki-financial-schedule fs-2">
+                </i>
+            </span>
             <span class="menu-title"> History Transaksi </span>
         </a>
     </div>

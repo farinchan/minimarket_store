@@ -27,26 +27,11 @@
         <!--end::Menu link-->
     </div>
     <div class="menu-item">
-        <!--begin::Menu link-->
-        <a class="menu-link " href="?page=apps/projects/activity">
-            <!--begin::Bullet-->
+        <a class="menu-link @if (request()->routeIs('back.profile')) active @endif" href="{{ route('back.profile') }}">
             <span class="menu-icon">
-                <span class="bullet bullet-dot bg-danger">
-                </span>
+                <i class="ki-outline ki-user fs-2">
+                </i>
             </span>
-            <!--end::Bullet-->
-            <!--begin::Title-->
-            <span class="menu-title">
-                Schipol Extranet </span>
-            <!--end::Title-->
-        </a>
-        <!--end::Menu link-->
-    </div>
-    <div class="menu-item">
-        <a class="menu-link @if (request()->routeIs('back.profile')) active @endif"
-        href="{{ route('back.profile') }}">
-            <span class="menu-icon">
-                <i class="ki-outline ki-lock-2 fs-2"></i> </span>
             <span class="menu-title">Profil Saya</span>
         </a>
     </div>
