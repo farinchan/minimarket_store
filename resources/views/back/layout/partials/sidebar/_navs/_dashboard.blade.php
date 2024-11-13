@@ -11,7 +11,7 @@
     </div>
     <div class="menu-item">
         <!--begin::Menu link-->
-        <a class="menu-link active" href="?page=apps/projects/project">
+        <a class="menu-link @if (request()->routeIs('back.dashboard')) active @endif" href="{{ route("back.dashboard") }}">
             <!--begin::Bullet-->
             <span class="menu-icon">
                 <span class="bullet bullet-dot bg-success">
