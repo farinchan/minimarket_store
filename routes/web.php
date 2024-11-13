@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\ProdukController as frontProdukController;
 use App\Http\Controllers\Front\CartController;
 
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Back\KasirController;
 use App\Http\Controllers\Back\KategoriProdukController;
 use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\ProdukController;
@@ -48,6 +49,11 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
 
     Route::get('/profile', [DashboardController::class, 'profileEdit'])->name('profile');
     Route::put('/profile/update', [DashboardController::class, 'profileUpdate'])->name('profile.update');
+
+    Route::prefix('kasir')->name('kasir.')->group(function () {
+        Route::get('/', [KasirController::class, 'index'])->name('index');
+        Route::post('/transaksi-process-ajax', [KasirController::class, 'transaksiProcessAjax'])->name('transaksi-process-ajax');
+    });
 
     Route::prefix('kategori-produk')->name('kategori-produk.')->group(function () {
         Route::get('/', [KategoriProdukController::class, 'index'])->name('index');

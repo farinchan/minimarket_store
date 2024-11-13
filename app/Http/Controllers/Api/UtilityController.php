@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\MetodePembayaran;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class UtilityController extends Controller
@@ -87,6 +88,23 @@ class UtilityController extends Controller
                 'status' => 'error',
                 'message' => 'ID metode pembayaran tidak boleh kosong'
             ], 400);
+        }
+    }
+
+    public function getProduct(Request $request)
+    {
+        $produk = Produk::find($request->id);
+        if ($produk) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data produk berhasil didapatkan',
+                'data' => $produk
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Produk tidak ditemukan'
+            ], 404);
         }
     }
 }

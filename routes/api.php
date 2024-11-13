@@ -13,3 +13,4 @@ Route::get('/rajaongkir/city', [UtilityController::class, 'rajaongkirCity'])->na
 Route::post('/rajaongkir/cost', [UtilityController::class, 'rajaongkirCost'])->name('api.rajaongkir.cost');
 
 Route::get('/payment/info', [UtilityController::class, 'paymentInfo'])->name('api.payment.info');
+Route::get('/product', [UtilityController::class, 'getProduct'])->name('api.product');

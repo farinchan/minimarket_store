@@ -80,14 +80,14 @@ License: For each use you must have a valid license purchased only from above li
         <!--end::Page-->
     </div>
     <!--end::App-->
-    @include('back/partials/_drawers')
+    {{-- @include('back/partials/_drawers') --}}
 
     @include('back/partials/_scrolltop')
     <!--begin::Modals-->
-    @include('back/partials/modals/_upgrade-plan')
+    {{-- @include('back/partials/modals/_upgrade-plan')
     @include('back/partials/modals/_view-users')
     @include('back/partials/modals/users-search/_main')
-    @include('back/partials/modals/_invite-friends')
+    @include('back/partials/modals/_invite-friends') --}}
     <!--end::Modals-->
     <!--begin::Javascript-->
     <script>

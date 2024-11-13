@@ -7,7 +7,7 @@
         <div class="app-sidebar-separator separator"></div>
     </div>
     <div class="menu-item">
-        <a class="menu-link " href="#">
+        <a class="menu-link @if (request()->routeIs('back.kasir.index')) active @endif" href="{{ route('back.kasir.index') }}">
             <span class="menu-icon">
                 <i class="ki-outline ki-lock-2 fs-2"></i> </span>
             <span class="menu-title">Kasir </span>

@@ -13,7 +13,7 @@ class KasirTransaksi extends Model
     protected $primaryKey = 'id_transaksi';
     protected $guarded = [];
 
-    public function kasir_transaksi_item()
+    public function kasirTransaksiItem()
     {
         return $this->hasMany(KasirTransaksiItem::class, 'id_transaksi');
     }
