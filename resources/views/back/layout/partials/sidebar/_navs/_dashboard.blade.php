@@ -9,6 +9,7 @@
         <div class="app-sidebar-separator separator"></div>
         <!--end::Separator-->
     </div>
+    @role('admin super|admin jual beli')
     <div class="menu-item">
         <!--begin::Menu link-->
         <a class="menu-link @if (request()->routeIs('back.dashboard')) active @endif" href="{{ route("back.dashboard") }}">
@@ -26,6 +27,7 @@
         </a>
         <!--end::Menu link-->
     </div>
+    @endrole
     <div class="menu-item">
         <a class="menu-link @if (request()->routeIs('back.profile')) active @endif" href="{{ route('back.profile') }}">
             <span class="menu-icon">
