@@ -22,7 +22,7 @@
                     </h1>
                 </div>
             </div>
-            <img src="img/bg_cat_shoes.jpg" class="img-fluid" alt="">
+            <img src="{{ asset("ext_img/banner/banner_new_5.jpg") }}" class="img-fluid" alt="">
         </div>
         <!-- /top_banner -->
         <div id="stick_here"></div>

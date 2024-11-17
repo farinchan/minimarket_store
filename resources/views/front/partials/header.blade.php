@@ -41,7 +41,7 @@
                                 <a href="{{ route('produk') }}">Produk</a>
                             </li>
                             <li class="megamenu submenu">
-                                <a href="" class="show-submenu-mega">Kategori</a>
+                                <a href="#" class="show-submenu-mega">Kategori</a>
                                 <div class="menu-wrapper">
                                     <div class="row small-gutters">
                                         @php
@@ -223,7 +223,7 @@
                             <a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
                         </li>
                         <li>
-                            <a href="#menu" class="btn_cat_mob">
+                            <a href="#" class="btn_cat_mob">
                                 <div class="hamburger hamburger--spin" id="hamburger">
                                     <div class="hamburger-box">
                                         <div class="hamburger-inner"></div>
