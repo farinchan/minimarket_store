@@ -12,16 +12,17 @@
                         <li><a href="#">Pesanan Saya</a></li>
                 </div>
             </div>
+            @php
+                $kategori_produk = \App\Models\KategoriProduk::limit(6)->get();
+                // dd($kategori_produk);
+            @endphp
             <div class="col-lg-3 col-md-6">
                 <h3 data-bs-target="#collapse_2">Kategori</h3>
                 <div class="collapse dont-collapse-sm links" id="collapse_2">
                     <ul>
-                        <li><a href="listing-grid-1-full.html">Clothes</a></li>
-                        <li><a href="listing-grid-2-full.html">Electronics</a></li>
-                        <li><a href="listing-grid-1-full.html">Furniture</a></li>
-                        <li><a href="listing-grid-3.html">Glasses</a></li>
-                        <li><a href="listing-grid-1-full.html">Shoes</a></li>
-                        <li><a href="listing-grid-1-full.html">Watches</a></li>
+                        @foreach ($kategori_produk as $kategori)
+                            <li><a href="{{ route('produk-category', ['cat' => $kategori->id_kategori_produk]) }}">{{ $kategori->nama }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -29,9 +30,9 @@
                     <h3 data-bs-target="#collapse_3">Kontak</h3>
                 <div class="collapse dont-collapse-sm contacts" id="collapse_3">
                     <ul>
-                        <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-                        <li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
-                        <li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+                        <li><i class="ti-home"></i>Jl. Nasional, Rundeng, Kec. Johan Pahlawan<br>Kabupaten Aceh Barat, Aceh</li>
+                        <li><i class="ti-headphone-alt"></i>+62 853-1915-6748</li>
+                        <li><i class="ti-email"></i><a href="#0">info@sultanswalayan.com</a></li>
                     </ul>
                 </div>
             </div>

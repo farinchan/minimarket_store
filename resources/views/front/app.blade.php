@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="Minimarket ini adalah website penjualan produk-produk kebutuhan sehari-hari, seperti makanan, minuman, dan kebutuhan rumah tangga lainnya. silahkan belanja produk-produk kebutuhan sehari-hari anda disini.">
+        content="Sultan swalayan ini adalah website penjualan produk-produk kebutuhan sehari-hari, seperti makanan, minuman, dan kebutuhan rumah tangga lainnya. silahkan belanja produk-produk kebutuhan sehari-hari anda disini.">
     <meta name="author" content="Fajri">
-    <title>Minimarket</title>
+    <title>Sultan Swalayan 1</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('ext_img/logo.png') }}">

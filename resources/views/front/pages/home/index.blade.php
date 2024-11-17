@@ -76,7 +76,7 @@
         <ul id="banners_grid" class="clearfix">
             <li>
                 <a href="#0" class="img_container">
-                    <img src="{{ asset('ext_img/banner/1.png') }}" data-src="{{ asset('ext_img/banner/banner_new_4.jpg') }}"
+                    <img src="{{ asset('ext_img/banner/banner_new_4.jpg') }}" data-src="{{ asset('ext_img/banner/banner_new_4.jpg') }}"
                         alt="" class="lazy">
                     <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <h3>Aneka Makanan Ringan</h3>
@@ -96,7 +96,7 @@
             </li>
             <li>
                 <a href="#0" class="img_container">
-                    <img src="{{ asset('ext_img/banner/3.png') }}" data-src="{{ asset('ext_img/banner/banner_new_7.jpg') }}"
+                    <img src="{{ asset('ext_img/banner/banner_new_7.jpg') }}" data-src="{{ asset('ext_img/banner/banner_new_7.jpg') }}"
                         alt="" class="lazy">
                     <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <h3>Kebutuhan Sehari-hari</h3>
