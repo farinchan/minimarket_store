@@ -35,23 +35,23 @@
                     <li>
                         <div class="sort_select">
                             <select name="sort" id="sort">
-                                <option value="popularity" selected="selected">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
+                                <option value="popularity" selected="selected">Urutkan yang terbaru</option>
+                                {{-- <option value="rating">Sort by average rating</option>
                                 <option value="date">Sort by newness</option>
                                 <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to
+                                <option value="price-desc">Sort by price: high to --}}
                             </select>
                         </div>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#0"><i class="ti-view-grid"></i></a>
                         <a href="listing-row-1-sidebar-left.html"><i class="ti-view-list"></i></a>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="false"
+                        {{-- <a data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="false"
                             aria-controls="filters">
                             <i class="ti-filter"></i><span>Filters</span>
-                        </a>
+                        </a> --}}
                     </li>
                 </ul>
                 <div class="collapse" id="filters">
@@ -223,7 +223,7 @@
                                 <a href="{{ route("produk-detail", $produk->id_produk) }}">
                                     <img class="img-fluid lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
-                                        data-src="{{ $produk->getGambar() }}" alt="">
+                                        data-src="{{ $produk->getGambar() }}" alt="" style="height: 250px; width: 100%; object-fit: cover;">
                                 </a>
                             </figure>
                             <a href="{{ route("produk-detail", $produk->id_produk) }}">
