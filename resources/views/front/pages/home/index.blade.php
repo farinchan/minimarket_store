@@ -9,19 +9,19 @@
     <main>
         <div id="carousel-home">
             <div class="owl-carousel owl-theme">
-                <div class="owl-slide cover"
-                    style="background-image: url( {{ asset('ext_img/banner/banner5.png') }});">
+                <div class="owl-slide cover" style="background-image: url( {{ asset('ext_img/banner/banner_new_1.jpg') }});">
                     <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <div class="container">
                             <div class="row justify-content-center justify-content-md-start">
                                 <div class="col-lg-6 static">
                                     <div class="slide-text white">
-                                        <h2 class="owl-slide-animated owl-slide-title">Belanja Apa pun<br>dan dimana pun</h2>
+                                        <h2 class="owl-slide-animated owl-slide-title">Belanja Apa pun<br>dan dimana pun
+                                        </h2>
                                         <p class="owl-slide-animated owl-slide-subtitle">
-                                        Semua ada di genggaman anda
+                                            Semua bisa anda dapatkan disini
                                         </p>
                                         <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
-                                                href="{{ route("produk") }}" role="button">Belanja Sekarang</a></div>
+                                                href="{{ route('produk') }}" role="button">Belanja Sekarang</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <!--/owl-slide-->
-                <div class="owl-slide cover" style="background-image: url({{ asset('ext_img/banner/banner1.jpg') }});">
+                <div class="owl-slide cover" style="background-image: url({{ asset('ext_img/banner/banner_new_2.jpg') }});">
                     <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <div class="container">
                             <div class="row justify-content-center justify-content-md-end">
@@ -40,7 +40,7 @@
                                             Apa pun yang anda butuhkan ada disini
                                         </p>
                                         <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
-                                                href="{{ route("produk") }}" role="button">Belanja Sekarang</a></div>
+                                                href="{{ route('produk') }}" role="button">Belanja Sekarang</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -49,8 +49,7 @@
                 </div>
                 <!--/owl-slide-->
 
-                <div class="owl-slide cover"
-                    style="background-image: url({{ asset('ext_img/banner/banner6.png') }});">
+                <div class="owl-slide cover" style="background-image: url({{ asset('ext_img/banner/banner_new_3.jpg') }});">
                     <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(255, 255, 255, 0.5)">
                         <div class="container">
                             <div class="row justify-content-center justify-content-md-start">
@@ -61,7 +60,7 @@
                                             Ayo belanja sekarang juga
                                         </p>
                                         <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
-                                                href="{{ route("produk") }}" role="button">Belanja Sekarang</a></div>
+                                                href="{{ route('produk') }}" role="button">Belanja Sekarang</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -124,13 +123,14 @@
                                 <span class="ribbon new">New</span>
                             @endif
                             <figure>
-                                <a href="{{ route("produk-detail", $top->id_produk) }}">
+                                <a href="{{ route('produk-detail', $top->id_produk) }}">
                                     <img class="img-fluid lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
-                                        data-src="{{ $top->getGambar() }}" alt="" style="height: 250px; width: 100%; object-fit: cover;">
+                                        data-src="{{ $top->getGambar() }}" alt=""
+                                        style="height: 250px; width: 100%; object-fit: cover;">
                                 </a>
                             </figure>
-                            <a href="{{ route("produk-detail", $top->id_produk) }}">
+                            <a href="{{ route('produk-detail', $top->id_produk) }}">
                                 <h3>{{ $top->nama }}</h3>
                             </a>
                             <div class="price_box">
@@ -141,8 +141,9 @@
                                         title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a>
                                 </li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                        title="Tambah ke Keranjang" id="addCart" onclick="addCart({{ $top->id_produk }})"
-                                        ><i class="ti-shopping-cart"></i><span>Tambah ke Keranjang</span></a>
+                                        title="Tambah ke Keranjang" id="addCart"
+                                        onclick="addCart({{ $top->id_produk }})"><i
+                                            class="ti-shopping-cart"></i><span>Tambah ke Keranjang</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -189,13 +190,13 @@
                                 <span class="ribbon new">New</span>
                             @endif
                             <figure>
-                                <a href="{{ route("produk-detail", $latest->id_produk) }}">
+                                <a href="{{ route('produk-detail', $latest->id_produk) }}">
                                     <img class="owl-lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
                                         data-src="{{ $latest->getGambar() }}" alt="">
                                 </a>
                             </figure>
-                            <a href="{{ route("produk-detail", $latest->id_produk) }}">
+                            <a href="{{ route('produk-detail', $latest->id_produk) }}">
                                 <h3>{{ $latest->nama }}</h3>
                             </a>
                             <div class="price_box">
@@ -207,7 +208,8 @@
                                             class="ti-heart"></i><span>Add to favorites</span></a>
                                 </li>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Add to cart" id="addCart" onclick="addCart({{ $latest->id_produk }})"                                        ><i
+                                        data-bs-placement="left" title="Add to cart" id="addCart"
+                                        onclick="addCart({{ $latest->id_produk }})"><i
                                             class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
                             </ul>
                         </div>
@@ -276,8 +278,7 @@
                         <div class="flex-grow-1 ms-3">
                             <h5>Alamat</h5>
                             <p>
-                                Jl. Raya Bandung-Sumedang KM. 21, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, Jawa
-                                Barat 45363
+                                Jl. Nasional, Rundeng, Kec. Johan Pahlawan, Kabupaten Aceh Barat, Aceh 23681
                             </p>
                         </div>
                     </div>
@@ -306,14 +307,15 @@
                 </div>
                 <div class="col-lg-6">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5642.365314641293!2d100.39004902260601!3d-0.323370490726151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd539ace73c9bc9%3A0x9ba714f19f07a983!2sMakmur%20Jaya%20Mart%20IAIN!5e0!3m2!1sid!2sid!4v1730123490588!5m2!1sid!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.8387644199145!2d96.13122625349096!3d4.150396525100313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303ec39573b8203b%3A0x3c7fc142b4b4ea2f!2sSultan%20Swalayan!5e0!3m2!1sid!2sid!4v1731805684393!5m2!1sid!2sid"
                         style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
-                < </div>
-                    <!-- /row -->
             </div>
-            <!-- /container -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
     </main>
 @endsection
 
@@ -366,5 +368,4 @@
             });
         </script>
     @endauth
-
 @endsection
