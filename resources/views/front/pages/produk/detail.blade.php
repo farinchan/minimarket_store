@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="all">
-                    <img src="{{ $produk->getGambar() }}" data-src="{{ $produk->getGambar() }}" alt="" class="img-fluid lazy">
+                    <img src="{{ $produk->getGambar() }}" data-src="{{ $produk->getGambar() }}" alt="" class="img-fluid lazy" style="width: 100%;">
                     {{-- <div class="slider">
                         <div class="owl-carousel owl-theme main">
                             <div style="background-image: url(img/products/shoes/1.jpg);" class="item-box"></div>
