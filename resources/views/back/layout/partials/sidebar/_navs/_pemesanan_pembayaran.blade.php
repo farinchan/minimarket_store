@@ -19,7 +19,7 @@
         </a>
     </div>
     <div class="menu-item">
-        <a class="menu-link @if (request()->routeIs('back.pesanan.index')) active @endif"
+        <a class="menu-link @if (request()->routeIs('back.pesanan.konfirmasi-pembayaran')) active @endif"
             href="{{ route('back.pesanan.konfirmasi-pembayaran') }}">
             <span class="menu-icon">
                 <i class="ki-outline ki-cheque fs-2">
@@ -28,8 +28,10 @@
             <span class="menu-title">Pembayaran</span>
         </a>
     </div>
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-        <span class="menu-link"><span class="menu-icon">
+    <div data-kt-menu-trigger="click"
+        class="menu-item menu-accordion @if (request()->routeIs('back.pesanan.*')) show here @endif">
+        <span class="menu-link">
+            <span class="menu-icon">
                 <i class="ki-outline ki-handcart fs-2">
                 </i>
             </span>
@@ -37,29 +39,30 @@
         </span>
         <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
-                <a class="menu-link" href="#" title="Produk baru yang akan ditambahkan" data-bs-toggle="tooltip"
-                    data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
+                <a class="menu-link @if (request()->routeIs('back.pesanan.diproses')) active @endif"
+                    href="{{ route('back.pesanan.diproses') }}"><span class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">Diproses</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a class="menu-link" href="#" title="Daftar produk yang sudah ada" data-bs-toggle="tooltip"
-                    data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
+                <a class="menu-link @if (request()->routeIs('back.pesanan.dikirim')) active @endif"
+                    href="{{ route('back.pesanan.dikirim') }}"><span class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">Sedang Dikirim</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a class="menu-link" href="#" title="Daftar produk yang sudah ada" data-bs-toggle="tooltip"
-                    data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
+                <a class="menu-link @if (request()->routeIs('back.pesanan.selesai')) active @endif"
+                    href="{{ route('back.pesanan.selesai') }}"><span
+                        class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">Selesai</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a class="menu-link" href="#" title="Daftar produk yang sudah ada" data-bs-toggle="tooltip"
-                    data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"><span class="menu-bullet">
+                <a class="menu-link @if (request()->routeIs('back.pesanan.dibatalkan')) active @endif"
+                    href="{{ route('back.pesanan.dibatalkan') }}"><span class="menu-bullet">
                         <span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">Dibatalkan</span>
                 </a>

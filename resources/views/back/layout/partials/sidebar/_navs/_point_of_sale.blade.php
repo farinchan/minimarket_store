@@ -16,7 +16,7 @@
         </a>
     </div>
     <div class="menu-item">
-        <a class="menu-link " href="#">
+        <a class="menu-link @if (request()->routeIs('back.kasir.history')) active @endif" href="{{ route('back.kasir.history') }}">
             <span class="menu-icon">
                 <i class="ki-outline ki-financial-schedule fs-2">
                 </i>

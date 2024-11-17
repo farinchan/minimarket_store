@@ -16,8 +16,8 @@
                             <form method="GET" class="card-title">
                                 <input type="hidden" name="page" value="{{ request('page', 1) }}">
                                 <div class="input-group d-flex align-items-center position-relative my-1">
-                                    <input type="text" class="form-control form-control-solid  ps-5 rounded-0" name="q"
-                                        value="{{ request('q') }}" placeholder="Cari Pembeli" />
+                                    <input type="text" class="form-control form-control-solid  ps-5 rounded-0"
+                                        name="q" value="{{ request('q') }}" placeholder="Cari Pembeli" />
                                     <button class="btn btn-primary btn-icon" type="submit" id="button-addon2">
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -41,8 +41,7 @@
                                 <div class="d-flex flex-wrap flex-sm-nowrap mb-6">
                                     <div
                                         class="d-flex flex-center flex-shrink-0 bg-light rounded w-100px h-100px w-lg-150px h-lg-150px me-7 mb-4">
-                                        <img class="mw-100px mw-lg-150px"
-                                            src="{{ $pesanan->pembeli?->getFoto() }}"
+                                        <img class="mw-100px mw-lg-150px" src="{{ $pesanan->pembeli?->getFoto() }}"
                                             alt="image">
                                     </div>
                                     <div class="flex-grow-1">
@@ -53,42 +52,47 @@
                                                         class="text-gray-800 text-hover-primary fs-2 fw-bold me-3">
                                                         {{ $pesanan->pembeli?->nama }}
                                                     </a>
-                                                    <span class="badge badge-light-dark me-auto">
+                                                    <span class="badge badge-light-warning me-auto">
                                                         {{ $pesanan->status }}
                                                     </span>
                                                 </div>
                                                 <div class="d-flex flex-wrap fw-semibold mb-4 fs-5 text-gray-500">
                                                     <table>
-                                                        <tr>
-                                                            <td width="180px">Jumlah Produk</td>
-                                                            <td>:</td>
-                                                            <td>{{ $pesanan->pemesananItem->count() }} Produk</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="180px">Total Harga Produk </td>
-                                                            <td>:</td>
-                                                            <td>@money($pesanan->total_harga_produk)</td>
-                                                        </tr>
-                                                        <tr>
+                                                        <tr style="vertical-align:top" class="mb-3">
                                                             <td>Layanan Pengiriman & Ongkir</td>
                                                             <td>:</td>
                                                             <td>{{ $pesanan->pengiriman_kurir }} - @money($pesanan->pengiriman_ongkir)
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Total</td>
+                                                        <tr style="vertical-align:top" class="mb-3">
+                                                            <td>No. Resi</td>
                                                             <td>:</td>
-                                                            <td>@money($pesanan->total_harga)</td>
+                                                            <td>{{ $pesanan->resi_pengiriman }}</td>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="vertical-align:top" class="mb-3">
+                                                            <td width="180px">No Telp</td>
+                                                            <td>:</td>
+                                                            <td>{{ $pesanan->pembeli?->no_telp }}</td>
+                                                        </tr>
+                                                        <tr style="vertical-align:top" class="mb-3">
+                                                            <td width="180px">Alamat </td>
+                                                            <td>:</td>
+                                                            <td>{{ $pesanan->pengiriman_alamat }} <br>
+                                                                {{ $pesanan->pengiriman_kota }} - {{ $pesanan->pengiriman_provinsi }}
+
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </div>
                                             </div>
                                             <div class="d-flex mb-4">
-                                                <form action="{{ route('back.pesanan.cancelPembayaran', $pesanan->id_pemesanan) }}"
+                                                <form action="{{ route('back.pesanan.dikirim.selesai', $pesanan->id_pemesanan) }}"
                                                     method="post">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-sm btn-danger me-3">Batalkan
-                                                        Pesanan</button>
+                                                    <button type="submit" class="btn btn-sm btn-light-primary me-3">
+                                                        Set Selesai
+                                                    </button>
                                                 </form>
 
                                             </div>
@@ -100,74 +104,47 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
-                                                <tr class="fw-bold fs-6 text-gray-800">
-                                                    <th>ID Pembayaran</th>
-                                                    <th>Tanggal Transfer</th>
-                                                    <th>bukti Pembayaran</th>
-                                                    <th>Action</th>
+                                                <tr class="fw-bold fs-5 text-gray-800">
+                                                    <th>#</th>
+                                                    <th>Produk</th>
+                                                    <th>Harga</th>
+                                                    <th>Subtotal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($pesanan->pembayaran as $konfirmasi)
-                                                    <tr>
-                                                        <td>#{{ $konfirmasi->id }}</td>
-                                                        <td>{{ Carbon\Carbon::parse($konfirmasi->created_at)->format('d M Y') }}
-                                                        </td>
-                                                        <td>
-                                                            <div style="width: 100px; ">
+                                                @forelse ($pesanan->pemesananItem as $item)
+                                                    <tr class="fs-5">
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $item->produk->nama }}
+                                                        <td>{{ $item->jumlah }} x @money($item->harga)</td>
+                                                        <td>@money($item->total_harga)</td>
 
-                                                                <a class=" overlay" data-fslightbox="lightbox-basic"
-                                                                    href="{{ $konfirmasi->getBuktiTransfer() }}">
-                                                                    <!--begin::Image-->
-                                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-50px"
-                                                                        style="background-image:url('{{ $konfirmasi->getBuktiTransfer() }}')">
-                                                                    </div>
-                                                                    <!--end::Image-->
-
-                                                                    <!--begin::Action-->
-                                                                    <div
-                                                                        class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
-                                                                        <i class="bi bi-eye-fill text-white fs-3x"></i>
-                                                                    </div>
-                                                                    <!--end::Action-->
-                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            @if ($konfirmasi->status == 'pending')
-                                                                <form style="display: inline"
-                                                                    action="{{ route('back.pesanan.konfirmasi-pembayaran.approve', $konfirmasi->id_pembayaran) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <input type="hidden" name="status" value="1">
-                                                                    <button type="submit"
-                                                                        class="btn btn-icon btn-success me-2 mb-2">
-                                                                        <i class="ki-duotone ki-check fs-3x">
-                                                                        </i>
-                                                                    </button>
-                                                                </form>
-                                                                <form style="display: inline"
-                                                                    action="{{ route('back.pesanan.konfirmasi-pembayaran.reject', $konfirmasi->id_pembayaran) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <input type="hidden" name="status" value="2">
-                                                                    <button type="submit"
-                                                                        class="btn btn-icon btn-danger me-2 mb-2">
-                                                                        <i class="ki-duotone ki-cross fs-3x">
-                                                                            <span class="path1"></span>
-                                                                            <span class="path2"></span>
-                                                                        </i>
-                                                                    </button>
-                                                                </form>
-                                                            @elseif ($konfirmasi->status == 'success')
-                                                                <span class="badge badge-light-success">Diterima</span>
-                                                            @else
-                                                                <span class="badge badge-light-danger">Ditolak</span>
-                                                            @endif
-                                                        </td>
-                                                    @empty
+                                                    </tr>
+                                                @empty
+                                                    <tr class="fs-5">
                                                         <td colspan="4" class="text-center">Belum ada pembayaran</td>
+                                                    </tr>
                                                 @endforelse
+                                                <tr class="fs-5">
+                                                    <td colspan="4" class="text-center">&nbsp;
+                                                        <div class="separator separator-dashed"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="fs-5">
+                                                    <td colspan="3" class="text-end">Subtotal Produk :</td>
+                                                    <td class="text-start">
+                                                        @money($pesanan->total_harga_produk)</td>
+                                                </tr>
+                                                <tr class="fs-5">
+                                                    <td colspan="3" class="text-end ">Ongkos Kirim :</td>
+                                                    <td class="text-start">
+                                                        @money($pesanan->pengiriman_ongkir)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" class="text-end fs-5">Total :</td>
+                                                    <td class="text-start fs-4 fw-bold">
+                                                        @money($pesanan->total_harga)</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -175,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                    @empty
+                @empty
                     <div class="col-lg-12">
                         <div class="card card-flush h-lg-100">
                             <div class="card-body pt-9 pb-0">
@@ -263,6 +240,4 @@
 
 @endsection
 @section('scripts')
-<script src="{{asset("back/plugins/custom/fslightbox/fslightbox.bundle.js")}}"></script>
-
 @endsection
