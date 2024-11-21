@@ -6,21 +6,21 @@
         <div class="mb-4 px-9">
             <!--begin::Info-->
             <div class="d-flex align-items-center mb-2">
-                                    <!--begin::Currency-->
-                    <span class="fs-4 fw-semibold text-gray-500 align-self-start me-1>">$</span>
-                    <!--end::Currency-->
+                <!--begin::Currency-->
+                <span class="fs-4 fw-semibold text-gray-500 align-self-start me-1>">Rp</span>
+                <!--end::Currency-->
                 <!--begin::Value-->
-                <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">69,700</span>
+                <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">{{ $transaksi_online }}</span>
                 <!--end::Value-->
                 <!--begin::Label-->
-                                    <span class="badge badge-light-success fs-base">
-                        <i class="ki-outline ki-arrow-up fs-5 text-success ms-n1"></i>
-                        2.2%                    </span>
+                {{-- <span class="badge badge-light-success fs-base">
+                    <i class="ki-outline ki-arrow-up fs-5 text-success ms-n1"></i>
+                    2.2% </span> --}}
                 <!--end::Label-->
             </div>
             <!--end::Info-->
             <!--begin::Description-->
-            <span class="fs-6 fw-semibold text-gray-500">Total Online Sales</span>
+            <span class="fs-6 fw-semibold text-gray-500">Total Transaksi Online</span>
             <!--end::Description-->
         </div>
         <!--end::Statistics-->

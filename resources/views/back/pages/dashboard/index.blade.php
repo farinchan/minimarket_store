@@ -3,9 +3,7 @@
 @section('content')
     <!--begin::Content-->
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
-        <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container  container-fluid ">
-            <!--begin::Row-->
             <div class="row g-5 gx-xl-10">
                 <!--begin::Col-->
                 <div class="col-xxl-6 mb-md-5 mb-xl-10">

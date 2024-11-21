@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\KasirTransaksi;
+use App\Models\KasirTransaksiItem;
 use App\Models\Pegawai;
+use App\Models\Pembeli;
+use App\Models\Pemesanan;
+use App\Models\PemesananItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +23,13 @@ class DashboardController extends Controller
         $data = [
             'title' => 'Dashboard',
             'menu' => 'dashboard',
-            'submenu' => ''
+            'submenu' => '',
+            'pembeli_count' => Pembeli::count(),
+            'pembeli_all' => Pembeli::latest()->limit(8)->get(),
+            'transaksi_online' => Pemesanan::sum('total_harga_produk'),
+            'transaksi_offline' => KasirTransaksi::sum('total_harga'),
+            'transaksi_item_count' => PemesananItem::count() + KasirTransaksiItem::count(),
+
         ];
         return view('back.pages.dashboard.index', $data);
     }

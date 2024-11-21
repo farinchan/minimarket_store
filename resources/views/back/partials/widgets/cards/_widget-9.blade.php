@@ -6,18 +6,19 @@
         <div class="mb-4 px-9">
             <!--begin::Statistics-->
             <div class="d-flex align-items-center mb-2">
+                <span class="fs-4 fw-semibold text-gray-500 align-self-start me-1>">Rp</span>
                 <!--begin::Value-->
-                <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">29,420</span>
+                <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1">{{ $transaksi_offline }}</span>
                 <!--end::Value-->
-               <!--begin::Label-->
-                                    <span class="badge badge-light-success fs-base">
-                        <i class="ki-outline ki-arrow-up fs-5 text-success ms-n1"></i>
-                        2.6%                    </span>
+                <!--begin::Label-->
+                {{-- <span class="badge badge-light-success fs-base">
+                    <i class="ki-outline ki-arrow-up fs-5 text-success ms-n1"></i>
+                    2.6% </span> --}}
                 <!--end::Label-->
             </div>
             <!--end::Statistics-->
             <!--begin::Description-->
-            <span class="fs-6 fw-semibold text-gray-500">Total Online Visitors</span>
+            <span class="fs-6 fw-semibold text-gray-500">Total Transaksi Offline</span>
             <!--end::Description-->
         </div>
         <!--end::Statistics-->
