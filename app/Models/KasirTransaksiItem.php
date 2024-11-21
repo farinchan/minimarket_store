@@ -17,4 +17,11 @@ class KasirTransaksiItem extends Model
     {
         return $this->belongsTo(KasirTransaksi::class, 'id_transaksi');
     }
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class, 'id_produk');
+    }
+
+    
 }

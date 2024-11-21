@@ -50,4 +50,16 @@ class KasirController extends Controller
             'message' => 'Transaksi berhasil disimpan',
         ]);
     }
+
+    public function history(Request $request)
+    {
+        $q = $request->q;
+        $data = [
+            'title' => 'History Transaksi',
+            'menu' => 'kasir',
+            'submenu' => 'history',
+            'list_kasir_transaksi' => KasirTransaksi::latest()->paginate(10),
+        ];
+        return view('back.pages.kasir.history', $data);
+    }
 }
