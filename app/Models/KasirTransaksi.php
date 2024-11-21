@@ -15,7 +15,7 @@ class KasirTransaksi extends Model
 
     public function kasirTransaksiItem()
     {
-        return $this->hasMany(KasirTransaksiItem::class, 'id_transaksi');
+        return $this->hasMany(KasirTransaksiItem::class, 'kasir_transaksi_id', 'id_kasir_transaksi');
     }
 
 }
