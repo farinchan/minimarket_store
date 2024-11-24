@@ -108,7 +108,7 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
             Route::delete('/pembeli/destroy/{id}', [UserController::class, 'pembeliDestroy'])->name('pembeli.destroy');
         });
 
-        route::middleware(['role:admin super|admin pegawai'])->group(function () {
+        route::middleware(['role:admin super|admin kepegawaian'])->group(function () {
             Route::get('/pegawai', [UserController::class, 'pegawai'])->name('pegawai');
             Route::post('/pegawai/store', [UserController::class, 'pegawaiStore'])->name('pegawai.store');
             Route::put('/pegawai/update/{id}', [UserController::class, 'pegawaiUpdate'])->name('pegawai.update');
