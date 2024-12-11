@@ -37,9 +37,7 @@
                                             data-kt-user-table-filter="jenis_kelamin" data-hide-search="true">
                                             <option></option>
                                             <option value="pegawai">Pegawai</option>
-                                            <option value="admin super">Admin Super</option>
-                                            <option value="admin jual beli">Admin Jual Beli</option>
-                                            <option value="admin kepegawaian">Admin Kepegawaian</option>
+                                            <option value="admin">Admin </option>
                                         </select>
                                     </div>
                                     <div class="d-flex justify-content-end">
@@ -90,9 +88,7 @@
                                                     class="form-select form-select-solid fw-bold">
                                                     <option></option>
                                                     <option value="pegawai">Pegawai</option>
-                                                    <option value="admin super">Admin Super</option>
-                                                    <option value="admin jual beli">Admin Jual Beli</option>
-                                                    <option value="admin kepegawaian">Admin Kepegawaian</option>
+                                                    <option value="admin super">Admin </option>
                                                 </select>
                                             </div>
                                             <div class="fv-row mb-10">
@@ -243,40 +239,13 @@
                                                                 id="kt_modal_update_role_option_1" />
                                                             <label class="form-check-label"
                                                                 for="kt_modal_update_role_option_1">
-                                                                <div class="fw-bold text-gray-800">Admin Super</div>
+                                                                <div class="fw-bold text-gray-800">Admin </div>
                                                                 <div class="text-gray-600">Pegawai dengan role admin
-                                                                    super</div>
+                                                                    </div>
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="role_admin_jual_beli"
-                                                                type="checkbox" value="admin jual beli"
-                                                                id="kt_modal_update_role_option_2" />
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_2">
-                                                                <div class="fw-bold text-gray-800">Admin Jual Beli</div>
-                                                                <div class="text-gray-600">Pegawai dengan role
-                                                                    admin jual beli</div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="role_admin_kepegawaian"
-                                                                type="checkbox" value="admin kepegawaian"
-                                                                id="kt_modal_update_role_option_3" />
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_3">
-                                                                <div class="fw-bold text-gray-800">Admin Kepegawaian</div>
-                                                                <div class="text-gray-600">Pegawai dengan role admin
-                                                                    Kepegawaian</div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
+
                                                     <div class='separator separator-dashed my-5'></div>
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -378,14 +347,8 @@
                                     <td>
                                         @foreach ($user->getRoleNames() as $role)
                                             @if ($role == 'admin super')
-                                                <span class="badge badge-light-danger fw-bold fs-8 px-2 py-1 ms-2">Admin
-                                                    Super</span>
-                                            @elseif ($role == 'admin jual beli')
-                                                <span class="badge badge-light-primary fw-bold fs-8 px-2 py-1 ms-2">Admin
-                                                    Jual Beli</span>
-                                            @elseif ($role == 'admin kepegawaian')
-                                                <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Admin
-                                                    Kepegawaian</span>
+                                                <span class="badge badge-light-danger fw-bold fs-8 px-2 py-1 ms-2">Admin</span>
+
                                             @elseif ($role == 'pegawai')
                                                 <span
                                                     class="badge badge-light-info fw-bold fs-8 px-2 py-1 ms-2">Pegawai</span>
@@ -530,36 +493,14 @@
                                                 value="admin super" id="kt_modal_update_role_option_1"
                                                 @if ($user->hasRole('admin super')) checked @endif />
                                             <label class="form-check-label" for="kt_modal_update_role_option_1">
-                                                <div class="fw-bold text-gray-800">Admin Super</div>
-                                                <div class="text-gray-600">Pegawai dengan role admin super</div>
+                                                <div class="fw-bold text-gray-800">Admin</div>
+                                                <div class="text-gray-600">Pegawai dengan role admin</div>
                                             </label>
                                         </div>
                                     </div>
                                     <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="role_admin_jual_beli" type="checkbox"
-                                                value="admin jual beli" id="kt_modal_update_role_option_2"
-                                                @if ($user->hasRole('admin jual beli')) checked @endif />
-                                            <label class="form-check-label" for="kt_modal_update_role_option_2">
-                                                <div class="fw-bold text-gray-800">Admin Jual Beli</div>
-                                                <div class="text-gray-600">Pegawai dengan role admin Jual Beli</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="role_admin_kepegawaian"
-                                                type="checkbox" value="admin kepegawaian" id="kt_modal_update_role_option_3"
-                                                @if ($user->hasRole('admin kepegawaian')) checked @endif />
-                                            <label class="form-check-label" for="kt_modal_update_role_option_3">
-                                                <div class="fw-bold text-gray-800">Admin Kepegawaian</div>
-                                                <div class="text-gray-600">Pegawai dengan role admin Kepegawaian</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
+
+
                                 </div>
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Email</label>

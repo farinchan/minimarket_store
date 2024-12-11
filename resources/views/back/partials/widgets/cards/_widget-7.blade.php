@@ -23,7 +23,7 @@
         <div class="symbol-group symbol-hover flex-nowrap">
             @foreach ($pembeli_all as $pembeli)
 
-            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Melody Macy">
+            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="{{ $pembeli->nama }}">
                 <img alt="Pic" src="{{ $pembeli->getFoto() }}" />
             </div>
             @endforeach

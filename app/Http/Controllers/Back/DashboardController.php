@@ -26,12 +26,77 @@ class DashboardController extends Controller
             'submenu' => '',
             'pembeli_count' => Pembeli::count(),
             'pembeli_all' => Pembeli::latest()->limit(8)->get(),
-            'transaksi_online' => Pemesanan::sum('total_harga_produk'),
+            'transaksi_online' => Pemesanan::where('status', '!=', 'belum bayar')->where('status', '!=', 'dibatalkan')->sum('total_harga_produk'),
             'transaksi_offline' => KasirTransaksi::sum('total_harga'),
-            'transaksi_item_count' => PemesananItem::count() + KasirTransaksiItem::count(),
+            'transaksi_item_count' => PemesananItem::whereHas('pemesanan', function ($query) {
+                $query->where('status', '!=', 'belum bayar')->where('status', '!=', 'dibatalkan');
+            })->sum('jumlah') + KasirTransaksiItem::sum('jumlah'),
 
         ];
         return view('back.pages.dashboard.index', $data);
+    }
+
+    public function ajaxDashboard()
+    {
+        $data = [
+            'mingguan' => [
+                'transaksi_online' => Pemesanan::where('status', '!=', 'belum bayar')->where('status', '!=', 'dibatalkan')
+                    ->selectRaw('sum(total_harga_produk) as total, DAYNAME(created_at) as day')
+                    ->orderBy('day', 'asc')
+                    ->groupBy('day')
+                    ->get()
+                    ->keyBy('day')
+                    ->union(collect([
+                        (object)['day' => 'Monday', 'total' => 0],
+                        (object)['day' => 'Tuesday', 'total' => 0],
+                        (object)['day' => 'Wednesday', 'total' => 0],
+                        (object)['day' => 'Thursday', 'total' => 0],
+                        (object)['day' => 'Friday', 'total' => 0],
+                        (object)['day' => 'Saturday', 'total' => 0],
+                        (object)['day' => 'Sunday', 'total' => 0],
+                    ])->keyBy('day'))
+                    ->values(),
+                'transaksi_offline' => KasirTransaksi::selectRaw('sum(total_harga) as total, DAYNAME(created_at) as day')
+                    ->orderBy('day', 'asc')
+                    ->groupBy('day')
+                    ->get()
+                    ->keyBy('day')
+                    ->union(collect([
+                        (object)['day' => 'Monday', 'total' => 0],
+                        (object)['day' => 'Tuesday', 'total' => 0],
+                        (object)['day' => 'Wednesday', 'total' => 0],
+                        (object)['day' => 'Thursday', 'total' => 0],
+                        (object)['day' => 'Friday', 'total' => 0],
+                        (object)['day' => 'Saturday', 'total' => 0],
+                        (object)['day' => 'Sunday', 'total' => 0],
+                    ])->keyBy('day'))
+                    ->values(),
+            ],
+            'transaksi_online_bulanan' => Pemesanan::where('status', '!=', 'belum bayar')->where('status', '!=', 'dibatalkan')
+                ->selectRaw('sum(total_harga_produk) as total, DATE(created_at) as date')
+                ->orderBy('date', 'desc')
+                ->limit(30)
+                ->groupBy('date')
+                ->get(),
+            'item_online_bulanan' => PemesananItem::whereHas('pemesanan', function ($query) {
+                $query->where('status', '!=', 'belum bayar')->where('status', '!=', 'dibatalkan');
+            })->selectRaw('sum(jumlah) as total, DATE(created_at) as date')
+                ->orderBy('date', 'desc')
+                ->limit(30)
+                ->groupBy('date')
+                ->get(),
+            'transaksi_offline_bulanan' => KasirTransaksi::selectRaw('sum(total_harga) as total, DATE(created_at) as date')
+                ->orderBy('date', 'desc')
+                ->limit(30)
+                ->groupBy('date')
+                ->get(),
+            'item_offline_bulanan' => KasirTransaksiItem::selectRaw('sum(jumlah) as total, DATE(created_at) as date')
+                ->orderBy('date', 'desc')
+                ->limit(30)
+                ->groupBy('date')
+                ->get(),
+        ];
+        return response()->json($data);
     }
 
     public function profileEdit()

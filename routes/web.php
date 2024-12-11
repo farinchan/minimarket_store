@@ -48,6 +48,7 @@ Route::post('/pesanan-saya/{id}/pembayaran', [PesananController::class, 'pembaya
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/ajax-dashboard', [DashboardController::class, 'ajaxDashboard'])->name('ajax-dashboard');
 
     Route::get('/profile', [DashboardController::class, 'profileEdit'])->name('profile');
     Route::put('/profile/update', [DashboardController::class, 'profileUpdate'])->name('profile.update');
@@ -75,7 +76,7 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
         Route::delete('/destroy/{id}', [ProdukController::class, 'destroy'])->name('destroy');
     });
 
-    Route::prefix('metode-pembayaran')->name('metode-pembayaran.')->middleware(['role:admin super|admin jual beli'])->group(function () {
+    Route::prefix('metode-pembayaran')->name('metode-pembayaran.')->middleware(['role:admin super|admin jual beli|pegawai'])->group(function () {
         Route::get('/', [MetodePembayaranController::class, 'index'])->name('index');
         Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
         Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');

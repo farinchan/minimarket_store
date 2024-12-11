@@ -45,31 +45,6 @@
                                         <textarea class="form-control" style="height: 100px;" id="pengiriman_alamat" name="pengiriman_alamat"
                                             placeholder="Alamat lengkap*" required></textarea>
                                     </div>
-
-                                    <div class="row no-gutters">
-                                        <div class="col-md-12 form-group">
-                                            <div class="custom-select-form" style="margin-bottom: 0;">
-                                                <select class="wide add_bottom_15" id="pengiriman_provinsi" required>
-                                                    <option value="" selected disabled>Provinsi*</option>
-                                                </select>
-                                                <input type="hidden" name="pengiriman_provinsi">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row no-gutters">
-                                        <div class="col-8 form-group pr-1">
-                                            <div class="custom-select-form">
-                                                <select class="wide add_bottom_15" id="pengiriman_kota" required>
-                                                    <option value="" selected disabled>Kota*</option>
-                                                </select>
-                                                <input type="hidden" name="pengiriman_kota">
-                                            </div>
-                                        </div>
-                                        <div class="col-4 form-group pl-1">
-                                            <input type="text" class="form-control" placeholder="Kode POS">
-                                        </div>
-                                    </div>
                                     <!-- /row -->
                                     <hr>
                                     <div class="row no-gutters">
@@ -77,6 +52,9 @@
                                             <div class="custom-select-form">
                                                 <select class="wide add_bottom_15" id="kurir" required>
                                                     <option value="" selected disabled>Metode Pengiriman*</option>
+                                                    <option value="jne">JNE</option>
+                                                    <option value="pos">POS</option>
+                                                    <option value="tiki">TIKI</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -87,6 +65,7 @@
                                             <select class="wide add_bottom_15" id="pengiriman_kurir" name="pengiriman_kurir"
                                                 required>
                                                 <option value="" selected disabled>Jenis pengiriman*</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -174,51 +153,6 @@
         }
 
         $(document).ready(function() {
-            $.ajax({
-                url: "{{ route('api.rajaongkir.province') }}",
-                type: 'GET',
-                success: function(response) {
-                    console.log(response);
-
-                    response.rajaongkir.results.forEach(element => {
-
-                        $('#pengiriman_provinsi').append(
-                            `<option value="${element.province_id}">${element.province}</option>`
-                        );
-                        $('#pengiriman_provinsi').niceSelect('update');
-                    });
-                }
-            });
-
-            $('#pengiriman_provinsi').change(function() {
-                $.ajax({
-                    url: "{{ route('api.rajaongkir.city') }}",
-                    type: 'GET',
-                    data: {
-                        province: $(this).val()
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#pengiriman_kota').html('');
-                        response.rajaongkir.results.forEach(element => {
-                            $('#pengiriman_kota').append(
-                                `<option value="${element.city_id}">${element.city_name}</option>`
-                            );
-                            $('#pengiriman_kota').niceSelect('update');
-                        });
-                    }
-                });
-            });
-
-            $('#pengiriman_kota').change(function() {
-                $('#kurir').html('<option value="" selected disabled>Metode Pengiriman</option>');
-                $('#kurir').append(
-                    `<option value="jne">JNE</option>
-                    <option value="pos">POS</option>
-                    <option value="tiki">TIKI</option>`
-                );
-                $('#kurir').niceSelect('update');
-            });
 
             $('#kurir').change(function() {
                 console.log($(this).val());
@@ -229,7 +163,7 @@
                     type: 'POST',
                     data: {
                         origin: 1,
-                        destination: $('#pengiriman_kota').val(),
+                        destination: 1,
                         weight: berat_total,
                         courier: $(this).val()
                     },
@@ -244,10 +178,6 @@
                             $('#pengiriman_kurir').niceSelect('update');
 
                         });
-                        $('[name=pengiriman_provinsi]').val(response.rajaongkir.destination_details
-                            .province);
-                        $('[name=pengiriman_kota]').val(response.rajaongkir.destination_details
-                            .city_name);
                     }
                 });
             });

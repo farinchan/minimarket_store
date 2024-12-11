@@ -9,7 +9,7 @@
         <div class="app-sidebar-separator separator"></div>
         <!--end::Separator-->
     </div>
-    @role('admin super|admin jual beli')
+    @role('admin super|admin jual beli|pegawai')
     <div class="menu-item">
         <!--begin::Menu link-->
         <a class="menu-link @if (request()->routeIs('back.dashboard')) active @endif" href="{{ route("back.dashboard") }}">
