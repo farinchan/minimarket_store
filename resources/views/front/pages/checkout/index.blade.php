@@ -45,30 +45,42 @@
                                         <textarea class="form-control" style="height: 100px;" id="pengiriman_alamat" name="pengiriman_alamat"
                                             placeholder="Alamat lengkap*" required></textarea>
                                     </div>
+                                    <div class="row no-gutters">
+                                        <div class="form-group">
+                                            <div class="custom-select-form">
+                                                <select class="wide add_bottom_15" id="pengiriman_kecamatan"
+                                                    name="pengiriman_kecamatan" required>
+                                                    <option value="" selected disabled>Kecamatan*</option>
+                                                    <option value="Johan Pahlawan">Kec. Johan Pahlawan</option>
+                                                    <option value="sama tiga">Kec. Sama Tiga</option>
+                                                    <option value="Bubon">Kec. Bubon</option>
+                                                    <option value="Arongan Lambalek">Kec. Arongan Lambalek</option>
+                                                    <option value="Woyla">Kec. Woyla</option>
+                                                    <option value="Woyla Barat">Kec. Woyla Barat</option>
+                                                    <option value="Woyla Timur">Kec. Woyla Timur</option>
+                                                    <option value="Kaway XVI">Kec. Kaway XVI</option>
+                                                    <option value="Meureubo">Kec. Meureubo</option>
+                                                    <option value="Pante Ceureumen">Kec. Pante Ceureumen</option>
+                                                    <option value="Sungai mas">Kec. Sungai mas</option>
+                                                    <option value="Panton Reu">Kec. Panton Reu</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- /row -->
                                     <hr>
                                     <div class="row no-gutters">
                                         <div class="col-md-12 form-group">
                                             <div class="custom-select-form">
-                                                <select class="wide add_bottom_15" id="kurir" required>
+                                                <select class="wide add_bottom_15" id="kurir" name="pengiriman_kurir" required>
                                                     <option value="" selected disabled>Metode Pengiriman*</option>
-                                                    <option value="jne">JNE</option>
-                                                    <option value="pos">POS</option>
-                                                    <option value="tiki">TIKI</option>
+                                                    <option value="Pengiriman Toko">Pengiriman Toko</option>
+                                                    <option value="Go Send">Go Send</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="custom-select-form">
-                                            <select class="wide add_bottom_15" id="pengiriman_kurir" name="pengiriman_kurir"
-                                                required>
-                                                <option value="" selected disabled>Jenis pengiriman*</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,42 +166,93 @@
 
         $(document).ready(function() {
 
-            $('#kurir').change(function() {
+            $('#pengiriman_kecamatan').change(function() {
                 console.log($(this).val());
-                kurir = $(this).val();
+                var ongkos_kirim = 0;
+                switch ($(this).val()) {
+                    case 'Johan Pahlawan':
+                        ongkos_kirim = 5000;
+                        break;
+                    case 'sama tiga':
+                        ongkos_kirim = 10000;
+                        break;
+                    case 'Bubon':
+                        ongkos_kirim = 10000;
+                        break;
+                    case 'Arongan Lambalek':
+                        ongkos_kirim = 15000;
+                        break;
+                    case 'Woyla':
+                        ongkos_kirim = 15000;
+                        break;
+                    case 'Woyla Barat':
+                        ongkos_kirim = 15000;
+                        break;
+                    case 'Woyla Timur':
+                        ongkos_kirim = 15000;
+                        break;
+                    case 'Kaway XVI':
+                        ongkos_kirim = 13000;
+                        break;
+                    case 'Meureubo':
+                        ongkos_kirim = 8000;
+                        break;
+                    case 'Pante Ceureumen':
+                        ongkos_kirim = 15000;
+                        break;
+                    case 'Sungai mas':
+                        ongkos_kirim = 20000;
+                        break;
+                    case 'Panton Reu':
+                        ongkos_kirim = 15000;
+                        break;
+                    default:
+                        ongkos_kirim = 0;
+                }
 
-                $.ajax({
-                    url: "{{ route('api.rajaongkir.cost') }}",
-                    type: 'POST',
-                    data: {
-                        origin: 1,
-                        destination: 1,
-                        weight: berat_total,
-                        courier: $(this).val()
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#pengiriman_kurir').html(
-                            '<option value="" selected disabled>Jenis pengiriman</option>');
-                        response.rajaongkir.results[0].costs.forEach(element => {
-                            $('#pengiriman_kurir').append(
-                                `<option ongkir="${element.cost[0].value}" value="${ kurir } - ${element.service}">${element.service} - ${element.cost[0].etd} hari - Rp.${element.cost[0].value}</option>`
-                            );
-                            $('#pengiriman_kurir').niceSelect('update');
-
-                        });
-                    }
-                });
-            });
-
-            $('#pengiriman_kurir').change(function() {
-                var ongkos_kirim = parseInt($(this).find(':selected').attr('ongkir'));
                 $('#ongkir').html(formatRupiah(ongkos_kirim));
                 $('#pengiriman_ongkir').val(ongkos_kirim);
                 $('#total').html(formatRupiah(subtotal + ongkos_kirim));
                 $('#total_harga').val(subtotal + ongkos_kirim);
 
             });
+
+            // $('#kurir').change(function() {
+            //     console.log($(this).val());
+            //     kurir = $(this).val();
+
+            //     $.ajax({
+            //         url: "{{ route('api.rajaongkir.cost') }}",
+            //         type: 'POST',
+            //         data: {
+            //             origin: 1,
+            //             destination: 1,
+            //             weight: berat_total,
+            //             courier: $(this).val()
+            //         },
+            //         success: function(response) {
+            //             console.log(response);
+            //             $('#pengiriman_kurir').html(
+            //                 '<option value="" selected disabled>Jenis pengiriman</option>');
+            //             response.rajaongkir.results[0].costs.forEach(element => {
+            //                 $('#pengiriman_kurir').append(
+            //                     `<option ongkir="${element.cost[0].value}" value="${ kurir } - ${element.service}">${element.service} - ${element.cost[0].etd} hari - Rp.${element.cost[0].value}</option>`
+            //                 );
+            //                 $('#pengiriman_kurir').niceSelect('update');
+
+            //             });
+            //         }
+            //     });
+            // });
+
+            // $('#pengiriman_kurir').change(function() {
+            //     var ongkos_kirim = parseInt($(this).find(':selected').attr('ongkir'));
+            //     $('#ongkir').html(formatRupiah(ongkos_kirim));
+            //     $('#pengiriman_ongkir').val(ongkos_kirim);
+            //     $('#total').html(formatRupiah(subtotal + ongkos_kirim));
+            //     $('#total_harga').val(subtotal + ongkos_kirim);
+
+            // });
 
             $('input[type=radio][name=metode_pembayaran_id]').change(function() {
                 $.ajax({

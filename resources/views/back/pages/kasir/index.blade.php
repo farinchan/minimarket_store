@@ -326,6 +326,10 @@
                         }
                     });
 
+                    pos_produk.bayar = result.value;
+                    pos_produk.kembalian = pos_produk.bayar - (pos_produk.total + (pos_produk
+                        .total * 0.12));
+
                     $.ajax({
                         url: "{{ route('back.kasir.transaksi-process-ajax') }}",
                         type: "POST",
@@ -334,10 +338,9 @@
                             data: pos_produk
                         },
                         success: function(response) {
+
                             console.log("success bayar", result.value);
-                            pos_produk.bayar = result.value;
-                            pos_produk.kembalian = pos_produk.bayar - (pos_produk.total + (pos_produk
-                                .total * 0.12));
+
 
                             Swal.fire({
                                 title: 'Transaksi Berhasil',

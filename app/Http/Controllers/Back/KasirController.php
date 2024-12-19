@@ -27,6 +27,12 @@ class KasirController extends Controller
     {
         $data = $request->data;
 
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $data,
+        //     'message' => 'Transaksi berhasil disimpan',
+        // ]);
+
         $Kasir_transaksi = new KasirTransaksi();
         $Kasir_transaksi->kasir_id = Auth::user()->pegawai->id_pegawai;
         $Kasir_transaksi->total_harga = $data['total'];

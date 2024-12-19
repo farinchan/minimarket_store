@@ -37,10 +37,11 @@ class CheckoutController extends Controller
 
     public function checkoutProcess(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'total_harga_produk' => 'required|numeric',
             // 'pengiriman_provinsi' => 'required|string',
-            // 'pengiriman_kota' => 'required|string',
+            'pengiriman_kecamatan' => 'required|string',
             'pengiriman_alamat' => 'required|string',
             'pengiriman_kurir' => 'required|string',
             'pengiriman_ongkir' => 'required|numeric',
@@ -61,8 +62,8 @@ class CheckoutController extends Controller
         $pemesanan = new Pemesanan();
         $pemesanan->pembeli_id = Auth::user()->pembeli->id_pembeli;
         $pemesanan->total_harga_produk = $request->total_harga_produk;
-        $pemesanan->pengiriman_provinsi = "Nanggroe Aceh Darussalam (NAD)";
-        $pemesanan->pengiriman_kota = "Aceh Barat";
+        $pemesanan->pengiriman_provinsi = "Aceh Barat";
+        $pemesanan->pengiriman_kota = $request->pengiriman_kecamatan;
         $pemesanan->pengiriman_alamat = $request->pengiriman_alamat;
         $pemesanan->pengiriman_kurir = $request->pengiriman_kurir;
         $pemesanan->pengiriman_ongkir = $request->pengiriman_ongkir;
