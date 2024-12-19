@@ -79,7 +79,7 @@
                             <div class="price_main"><span class="new_price">@money($produk->harga)</span></div>
                         </div>
                         <div class="col-lg-4 col-md-6">
-                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Tambah ke Keranjang</a></div>
+                            <div id="addCart" class="btn_add_to_cart"><a href="#0" class="btn_1">Tambah ke Keranjang</a></div>
                         </div>
                     </div>
                 </div>
@@ -321,4 +321,29 @@
 @section('scripts')
     <!-- SPECIFIC SCRIPTS -->
     <script src="{{ asset('front/js/carousel_with_thumbs.js') }}"></script>
+    @auth
+        <script>
+            $(document).ready(function() {
+                $('#addCart').click(function() {
+                    var id = {{ $produk->id_produk }};
+                    var qty = $('#quantity_1').val();
+                    $.ajax({
+                        url: "{{ route('cart-add') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            produk_id: id,
+                            jumlah: qty,
+                        },
+                        success: function(data) {
+                            console.log(data);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+    @endauth
 @endsection
