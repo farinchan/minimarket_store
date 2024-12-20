@@ -127,7 +127,7 @@
                                     <img class="img-fluid lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
                                         data-src="{{ $top->getGambar() }}" alt=""
-                                        style="height: 250px; width: 100%; ">
+                                        style="height: 250px; width: 100%; object-fit: fill">
                                 </a>
                             </figure>
                             <a href="{{ route('produk-detail', $top->id_produk) }}">
@@ -193,7 +193,7 @@
                                 <a href="{{ route('produk-detail', $latest->id_produk) }}">
                                     <img class="owl-lazy"
                                         src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
-                                        data-src="{{ $latest->getGambar() }}" alt="">
+                                        data-src="{{ $latest->getGambar() }}" alt="" style="height: 250px; width: 100%; object-fit: fill;">
                                 </a>
                             </figure>
                             <a href="{{ route('produk-detail', $latest->id_produk) }}">

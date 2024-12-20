@@ -101,7 +101,7 @@
                                         <a href="{{ route("produk-detail", $produk->id_produk) }}">
                                             <img class="img-fluid lazy"
                                                 src="{{ asset('front/img/products/product_placeholder_square_medium.jpg') }}"
-                                                data-src="{{ $produk->getGambar() }}" alt="">
+                                                data-src="{{ $produk->getGambar() }}" alt="" style="height: 250px; width: 100%; object-fit: fill;">
                                         </a>
                                     </figure>
                                     <a href="{{ route("produk-detail", $produk->id_produk) }}">
