@@ -54,6 +54,8 @@
                                             // Bagi data menjadi 3 bagian
                                             $chunks = $kategori_produk->chunk($per_column);
 
+                                            // dd($chunks);
+
                                         @endphp
                                         <div class="col-lg-3">
                                             <h3>Kategori Produk</h3>
@@ -70,7 +72,7 @@
                                             <ul>
                                                 @foreach ($chunks[1] as $kategori2)
                                                     <li><a
-                                                            href="{{ route('produk-category', ['cat' => $kategori1->id_kategori_produk]) }}">{{ $kategori2->nama }}</a>
+                                                            href="{{ route('produk-category', ['cat' => $kategori2->id_kategori_produk]) }}">{{ $kategori2->nama }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -80,7 +82,7 @@
                                             <ul>
                                                 @foreach ($chunks[2] as $kategori3)
                                                     <li><a
-                                                            href="{{ route('produk-category', ['cat' => $kategori1->id_kategori_produk]) }}">{{ $kategori3->nama }}</a>
+                                                            href="{{ route('produk-category', ['cat' => $kategori3->id_kategori_produk]) }}">{{ $kategori3->nama }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
