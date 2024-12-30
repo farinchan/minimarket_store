@@ -58,7 +58,7 @@
                 <button type="button" onClick="cartSome();" class="btn_1 gray">Update Cart</button>
             </div>
             <div class="col-sm-8">
-                <div class="apply-coupon">
+                {{-- <div class="apply-coupon">
                     <div class="form-group">
                         <div class="row g-2">
                             <div class="col-md-6"><input type="text" name="coupon-code" value=""
@@ -67,7 +67,7 @@
                                     Coupon</button></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- /cart_actions -->

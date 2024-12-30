@@ -137,9 +137,7 @@
                                 <span class="new_price">@money($top->harga)</span>
                             </div>
                             <ul>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
-                                        title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a>
-                                </li>
+
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
                                         title="Tambah ke Keranjang" id="addCart"
                                         onclick="addCart({{ $top->id_produk }})"><i
@@ -203,14 +201,11 @@
                                 <span class="new_price">@money($latest->harga)</span>
                             </div>
                             <ul>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Add to favorites"><i
-                                            class="ti-heart"></i><span>Add to favorites</span></a>
-                                </li>
+
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
                                         data-bs-placement="left" title="Add to cart" id="addCart"
                                         onclick="addCart({{ $latest->id_produk }})"><i
-                                            class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                            class="ti-shopping-cart"></i><span>Tambahkan Ke Keranjang</span></a></li>
                             </ul>
                         </div>
                         <!-- /grid_item -->

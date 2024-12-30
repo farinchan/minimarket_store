@@ -6,10 +6,10 @@
                 <div class="collapse dont-collapse-sm links" id="collapse_1">
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="#">Produk</a></li>
+                        <li><a href="{{ route('produk') }}">Produk</a></li>
                         <li><a href="#">Kategori</a></li>
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Pesanan Saya</a></li>
+                        <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                        <li><a href="{{ route("pesanan-saya") }}">Pesanan Saya</a></li>
                 </div>
             </div>
             @php

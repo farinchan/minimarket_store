@@ -234,10 +234,6 @@
                             </div>
                             <ul>
                                 <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Add to favorites"><i
-                                            class="ti-heart"></i><span>Add to favorites</span></a>
-                                </li>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip"
                                         data-bs-placement="left" title="Tambah ke Keranjang" id="addCart" onclick="addCart({{ $produk->id_produk }})"><i
                                             class="ti-shopping-cart"></i><span>Tambah ke keranjang</span></a>
                                 </li>
