@@ -54,9 +54,9 @@
         </table>
 
         <div class="row add_top_30 flex-sm-row-reverse cart_actions">
-            <div class="col-sm-4 text-end">
+            {{-- <div class="col-sm-4 text-end">
                 <button type="button" onClick="cartSome();" class="btn_1 gray">Update Cart</button>
-            </div>
+            </div> --}}
             <div class="col-sm-8">
                 {{-- <div class="apply-coupon">
                     <div class="form-group">

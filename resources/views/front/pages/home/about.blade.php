@@ -31,7 +31,7 @@
                 </p>
             </div>
         </div>
-        <div class="row justify-content-between align-items-center flex-lg-row-reverse content_general_row">
+        {{-- <div class="row justify-content-between align-items-center flex-lg-row-reverse content_general_row">
             <div class="col-lg-5 text-center">
                 <figure><img src="{{ asset("front/img/about_placeholder.jpg") }}" data-src="{{ asset("front/img/about_1.svg") }}" alt="" class="img-fluid lazy" width="350" height="268"></figure>
             </div>
@@ -39,9 +39,9 @@
                 <h2>Belanja Kapanpun dan Dimanapun</h2>
                 <p>Kami menyediakan berbagai macam kebutuhan anda, mulai dari kebutuhan sehari-hari hingga kebutuhan rumah tangga. Kami juga menyediakan berbagai macam produk yang berkualitas dan harga yang terjangkau.</p>
             </div>
-        </div>
+        </div> --}}
         <!--/row-->
-        <div class="row justify-content-between align-items-center content_general_row">
+        {{-- <div class="row justify-content-between align-items-center content_general_row">
             <div class="col-lg-5 text-start">
                 <figure><img src="{{ asset("front/img/about_placeholder.jpg") }}" data-src="{{ asset("front/img/about_2.svg") }}" alt="" class="img-fluid lazy" width="350" height="268"></figure>
             </div>
@@ -49,7 +49,7 @@
                 <h2>Pilihan Produk yang Beragam</h2>
                 <p>Apa pun yang anda butuhkan, kami menyediakannya. Kami memiliki berbagai macam produk yang berkualitas dan harga yang terjangkau.</p>
             </div>
-        </div>
+        </div> --}}
         <!--/row-->
         <!--/row-->
     </div>

@@ -80,7 +80,7 @@
                         alt="" class="lazy">
                     <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <h3>Aneka Makanan Ringan</h3>
-                        <div><span class="btn_1">Belanja Sekarang</span></div>
+                        {{-- <div><span class="btn_1">Belanja Sekarang</span></div> --}}
                     </div>
                 </a>
             </li>
@@ -90,7 +90,7 @@
                         alt="" class="lazy">
                     <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <h3>Aneka Minuman</h3>
-                        <div><span class="btn_1">Belanja Sekarang</span></div>
+                        {{-- <div><span class="btn_1">Belanja Sekarang</span></div> --}}
                     </div>
                 </a>
             </li>
@@ -100,7 +100,7 @@
                         alt="" class="lazy">
                     <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                         <h3>Kebutuhan Sehari-hari</h3>
-                        <div><span class="btn_1">Belanja Sekarang</span></div>
+                        {{-- <div><span class="btn_1">Belanja Sekarang</span></div> --}}
                     </div>
                 </a>
             </li>
