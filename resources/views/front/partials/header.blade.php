@@ -195,7 +195,7 @@
                                         @auth
                                             @role('pembeli')
                                                 <li>
-                                                    <a href="#"><i class="ti-user"></i>
+                                                    <a href="{{ route('pesanan-saya') }}"><i class="ti-user"></i>
                                                         {{ Auth::user()->pembeli?->nama }}
                                                     </a>
                                                 </li>

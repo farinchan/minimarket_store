@@ -44,7 +44,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->hasRole('pembeli')) {
-                Alert::success('Success', 'Selamat datang ' . Auth::user()->pembeli->nama);
+                Alert::success('Selamat datang', 'Selamat datang ' . Auth::user()->pembeli->nama);
                 return redirect()->route('home');
             }else{
                 return redirect()->route('back.dashboard');
