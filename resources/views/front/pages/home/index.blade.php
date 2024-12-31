@@ -163,7 +163,7 @@
                                 Minimarket kami menyediakan berbagai macam kebutuhan sehari-hari anda, siap melayani anda
                             </p>
                             <div class="feat_text_block">
-                                <a class="btn_1" href="listing-grid-1-full.html" role="button">Belanja Sekarang</a>
+                                <a class="btn_1" href="{{ route("produk") }}" role="button">Belanja Sekarang</a>
                             </div>
                         </div>
                     </div>

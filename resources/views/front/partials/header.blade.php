@@ -205,7 +205,7 @@
                                                 </li>
                                             @else
                                                 <li>
-                                                    <a href="#"><i class="ti-user"></i>
+                                                    <a href="{{ route("back.dashboard") }}"><i class="ti-user"></i>
                                                         {{ Auth::user()->pegawai?->nama }}
                                                     </a>
                                                 </li>
